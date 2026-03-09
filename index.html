@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMAD Method - คู่มือการใช้งาน</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    :root {
+      --primary: #1a237e; --primary-dark: #0d1453; --primary-light: #3949ab;
+      --secondary: #42a5f5; --secondary-dark: #1e88e5; --secondary-light: #64b5f6;
+      --accent-orange: #ff9800; --accent-red: #ef5350; --accent-purple: #7c4dff;
+      --accent-pink: #ec407a; --accent-amber: #ffc107;
+      --bg-dark: #f0f2f8; --bg-card: rgba(26,35,126,0.05); --bg-card-hover: rgba(26,35,126,0.1);
+      --text-primary: #1a1a2e; --text-secondary: #4a4a6a; --text-muted: #8a8aaa;
+      --grid-color: rgba(26,35,126,0.06); --border-color: rgba(26,35,126,0.12);
+      --transition-fast: 200ms; --transition-normal: 350ms; --transition-slow: 500ms;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'IBM Plex Sans Thai', 'Inter', sans-serif;
+      background: var(--bg-dark); color: var(--text-primary);
+      overflow: hidden; width: 100vw; height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .grid-bg {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 40px 40px; z-index: 0; pointer-events: none;
+    }
+    .grid-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, var(--bg-card-hover) 0%, transparent 60%);
+    }
+
+    .presentation {
+      position: relative; width: 100vw;
+      height: 56.25vw; max-height: 100vh; max-width: 177.78vh;
+      margin: 0 auto; overflow: hidden; z-index: 1;
+    }
+
+    .slide {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      padding: clamp(28px, 3.5vw, 56px);
+      opacity: 0; visibility: hidden; transform: translateX(60px);
+      transition: opacity var(--transition-slow) ease,
+                  transform var(--transition-slow) cubic-bezier(0.34, 1.56, 0.64, 1),
+                  visibility 0s var(--transition-slow);
+    }
+    .slide.active { opacity: 1; visibility: visible; transform: translateX(0); transition-delay: 0s; }
+    .slide.prev { transform: translateX(-60px); }
+
+    .slide-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: clamp(16px, 2vw, 28px); flex-shrink: 0;
+    }
+    .slide-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 20px;
+      font-size: clamp(10px, 1vw, 13px); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      background: var(--bg-card); color: var(--primary);
+      border: 1px solid var(--border-color);
+    }
+    .slide-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
+    .slide-number {
+      font-size: clamp(11px, 1vw, 14px); font-weight: 500;
+      color: var(--text-muted); font-family: 'Inter', monospace;
+    }
+
+    .slide-title {
+      font-size: clamp(22px, 3vw, 48px); font-weight: 800;
+      line-height: 1.15; margin-bottom: clamp(6px, 0.8vw, 12px);
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .slide-subtitle {
+      font-size: clamp(12px, 1.3vw, 18px); color: var(--text-secondary);
+      font-weight: 400; line-height: 1.6; max-width: 700px;
+    }
+    .slide-content {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; overflow: hidden;
+    }
+
+    .cover-content {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center;
+      gap: clamp(14px, 1.8vw, 24px);
+    }
+    .cover-title {
+      font-size: clamp(32px, 5vw, 72px); font-weight: 900;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmer 4s ease infinite; background-size: 200% 200%;
+    }
+    .cover-subtitle {
+      font-size: clamp(13px, 1.6vw, 22px); color: var(--text-secondary);
+      font-weight: 400; max-width: 600px; line-height: 1.6;
+    }
+    .cover-roles {
+      display: flex; gap: clamp(10px, 1.2vw, 20px);
+      margin-top: clamp(6px, 0.8vw, 12px); flex-wrap: wrap; justify-content: center;
+    }
+    .role-chip {
+      padding: clamp(7px, 0.7vw, 11px) clamp(14px, 1.4vw, 24px);
+      border-radius: 50px; font-size: clamp(10px, 1vw, 14px); font-weight: 600;
+      border: 1px solid var(--border-color); background: var(--bg-card);
+      color: var(--text-secondary); transition: all var(--transition-fast) ease;
+    }
+    .role-chip:hover { transform: translateY(-2px) scale(1.05); }
+
+    .end-content {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center; gap: 24px;
+    }
+    .end-title {
+      font-size: clamp(36px, 5.5vw, 80px); font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmer 3s ease infinite; background-size: 200% 200%;
+    }
+
+    .cards-grid {
+      display: grid; gap: clamp(10px, 1.2vw, 16px);
+      max-width: 1200px; margin: 0 auto; width: 100%;
+    }
+    .cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .cards-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .card {
+      padding: clamp(12px, 1.4vw, 22px); border-radius: 14px;
+      border: 1px solid var(--border-color); background: var(--bg-card);
+      transition: all var(--transition-fast) ease;
+    }
+    .card:hover { transform: translateY(-3px); background: var(--bg-card-hover); }
+    .card-icon { font-size: clamp(20px, 2.2vw, 34px); margin-bottom: clamp(6px, 0.8vw, 10px); }
+    .card-title { font-size: clamp(12px, 1.2vw, 16px); font-weight: 700; margin-bottom: clamp(3px, 0.4vw, 6px); }
+    .card-desc { font-size: clamp(9px, 0.9vw, 13px); color: var(--text-secondary); line-height: 1.5; }
+    .card-tag {
+      display: inline-block; padding: 2px 8px; border-radius: 12px;
+      font-size: clamp(8px, 0.75vw, 11px); font-weight: 600; margin-top: 6px;
+    }
+    .tag-blue { background: var(--bg-card-hover); color: var(--primary); }
+    .tag-green { background: rgba(16,185,129,0.12); color: #059669; }
+    .tag-orange { background: rgba(255,152,0,0.12); color: var(--accent-orange); }
+    .tag-purple { background: rgba(124,77,255,0.12); color: var(--accent-purple); }
+    .tag-red { background: rgba(239,83,80,0.12); color: var(--accent-red); }
+
+    .flow-container {
+      display: flex; flex-direction: column; gap: clamp(8px, 1vw, 14px);
+      max-width: 1200px; margin: 0 auto; width: 100%;
+    }
+    .flow-row {
+      display: flex; align-items: center; gap: clamp(4px, 0.6vw, 10px);
+      flex-wrap: wrap; justify-content: center;
+    }
+    .flow-step {
+      display: flex; align-items: center; gap: clamp(4px, 0.5vw, 8px);
+      padding: clamp(8px, 0.8vw, 13px) clamp(10px, 1.1vw, 18px);
+      border-radius: 10px; font-size: clamp(9px, 0.95vw, 13px); font-weight: 500;
+      transition: all var(--transition-fast) ease; white-space: nowrap;
+      border: 1px solid var(--border-color); background: var(--bg-card);
+    }
+    .flow-step:hover { transform: translateY(-2px); background: var(--bg-card-hover); }
+    .flow-step .icon { font-size: clamp(12px, 1.2vw, 18px); }
+    .flow-arrow { color: var(--text-muted); font-size: clamp(12px, 1.3vw, 20px); flex-shrink: 0; }
+
+    .timeline {
+      position: relative; padding-left: clamp(28px, 3.5vw, 44px);
+      max-width: 900px; margin: 0 auto; width: 100%;
+    }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; border-radius: 2px;
+      background: linear-gradient(180deg, var(--primary), var(--secondary), var(--primary-light));
+    }
+    .timeline-item {
+      position: relative; padding: clamp(8px, 1vw, 14px) 0;
+      padding-left: clamp(16px, 2vw, 26px);
+    }
+    .timeline-item::before {
+      content: ''; position: absolute;
+      left: calc(-1 * clamp(28px, 3.5vw, 44px) - 1px);
+      top: clamp(14px, 1.8vw, 22px);
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--primary); border: 3px solid var(--bg-dark);
+      box-shadow: 0 0 0 3px var(--bg-card-hover);
+    }
+    .timeline-item:nth-child(2)::before { background: var(--secondary); }
+    .timeline-item:nth-child(3)::before { background: var(--accent-purple); }
+    .timeline-item:nth-child(4)::before { background: var(--accent-orange); }
+    .timeline-item:nth-child(5)::before { background: var(--accent-pink); }
+    .timeline-date {
+      font-size: clamp(9px, 0.85vw, 12px); font-weight: 700;
+      color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .timeline-title { font-size: clamp(12px, 1.2vw, 16px); font-weight: 700; margin-bottom: 2px; }
+    .timeline-desc { font-size: clamp(9px, 0.9vw, 13px); color: var(--text-secondary); line-height: 1.5; }
+
+    .split-row {
+      display: flex; gap: clamp(10px, 1.2vw, 18px);
+      justify-content: center; flex-wrap: wrap;
+    }
+    .mini-card {
+      flex: 1; min-width: 180px; max-width: 380px;
+      padding: clamp(12px, 1.2vw, 20px); border-radius: 12px;
+      border: 1px solid var(--border-color); background: var(--bg-card);
+    }
+    .mini-card-title {
+      font-size: clamp(11px, 1.1vw, 15px); font-weight: 700;
+      margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
+    }
+    .mini-card ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+    .mini-card ul li {
+      font-size: clamp(9px, 0.85vw, 12px); color: var(--text-secondary);
+      padding-left: 12px; position: relative; line-height: 1.5;
+    }
+    .mini-card ul li::before {
+      content: '\203A'; position: absolute; left: 0;
+      color: var(--primary); font-weight: 700;
+    }
+
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 2vw, 28px); max-width: 1200px; margin: 0 auto; width: 100%;
+    }
+    .col-section { display: flex; flex-direction: column; gap: clamp(8px, 1vw, 14px); }
+
+    .section-label {
+      font-size: clamp(10px, 0.9vw, 13px); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-muted); margin-bottom: clamp(6px, 0.8vw, 12px);
+      padding-bottom: 6px; border-bottom: 1px solid var(--border-color);
+    }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(5px, 0.6vw, 9px); }
+    .bullet-list li {
+      display: flex; align-items: flex-start; gap: clamp(6px, 0.7vw, 10px);
+      font-size: clamp(10px, 1vw, 14px); color: var(--text-secondary); line-height: 1.5;
+    }
+    .bullet-list li .bullet {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--primary); flex-shrink: 0; margin-top: 7px;
+    }
+
+    .stats-row {
+      display: flex; justify-content: center; gap: clamp(16px, 2.5vw, 40px);
+      flex-wrap: wrap; max-width: 1000px; margin: 0 auto; width: 100%;
+    }
+    .stat-item { text-align: center; padding: clamp(14px, 1.8vw, 26px); min-width: clamp(100px, 10vw, 160px); }
+    .stat-number {
+      font-size: clamp(28px, 3.5vw, 56px); font-weight: 900; line-height: 1;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: clamp(4px, 0.5vw, 8px);
+    }
+    .stat-label {
+      font-size: clamp(10px, 1vw, 14px); font-weight: 600;
+      color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .stat-desc { font-size: clamp(9px, 0.85vw, 12px); color: var(--text-muted); margin-top: 3px; }
+
+    .cmd-list { display: flex; flex-direction: column; gap: clamp(4px, 0.5vw, 7px); width: 100%; max-width: 1100px; margin: 0 auto; }
+    .cmd-item {
+      display: flex; align-items: center; gap: clamp(8px, 1vw, 14px);
+      padding: clamp(6px, 0.7vw, 10px) clamp(10px, 1.2vw, 16px);
+      border-radius: 8px; border: 1px solid var(--border-color);
+      background: var(--bg-card); transition: all var(--transition-fast) ease;
+      font-size: clamp(9px, 0.9vw, 13px);
+    }
+    .cmd-item:hover { background: var(--bg-card-hover); transform: translateX(3px); }
+    .cmd-icon { font-size: clamp(14px, 1.4vw, 20px); flex-shrink: 0; width: clamp(24px, 2.4vw, 32px); text-align: center; }
+    .cmd-name {
+      font-family: 'Inter', monospace; font-weight: 600; color: var(--primary);
+      font-size: clamp(8px, 0.82vw, 12px); white-space: nowrap; min-width: clamp(140px, 18vw, 280px);
+    }
+    .cmd-desc { color: var(--text-secondary); flex: 1; }
+
+    .highlight-blue { background: var(--bg-card-hover) !important; border-color: var(--border-color) !important; }
+    .highlight-green { background: rgba(16,185,129,0.1) !important; border-color: rgba(16,185,129,0.25) !important; }
+    .highlight-purple { background: rgba(124,77,255,0.1) !important; border-color: rgba(124,77,255,0.25) !important; }
+
+    .hl { font-weight: 700; }
+    .hl-blue { color: var(--primary); }
+
+    code {
+      font-family: 'Inter', monospace; background: var(--bg-card-hover);
+      padding: 2px 8px; border-radius: 6px; font-size: 0.9em;
+      color: var(--primary); font-weight: 600;
+    }
+
+    .nav-bar {
+      position: fixed; bottom: clamp(16px, 2vw, 28px);
+      left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px 16px; border-radius: 16px;
+      background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08); z-index: 100;
+    }
+    .nav-btn {
+      width: 40px; height: 40px; border-radius: 10px;
+      border: 1px solid var(--border-color); background: transparent;
+      color: var(--text-secondary); font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition-fast) ease;
+    }
+    .nav-btn:hover { background: var(--bg-card-hover); color: var(--primary); }
+    .nav-btn:active { transform: scale(0.92); }
+    .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .nav-progress { display: flex; align-items: center; gap: 4px; }
+    .nav-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--text-muted); opacity: 0.3;
+      transition: all var(--transition-fast) ease; cursor: pointer;
+    }
+    .nav-dot.active { background: var(--primary); opacity: 1; width: 22px; border-radius: 4px; }
+    .nav-dot:hover { opacity: 0.7; }
+    .nav-counter {
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      font-family: 'Inter', monospace; font-variant-numeric: tabular-nums;
+      min-width: 50px; text-align: center;
+    }
+
+    .page-dropdown {
+      position: fixed; bottom: clamp(72px, 8vw, 96px);
+      left: 50%; transform: translateX(-50%) translateY(10px);
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      border: 1px solid var(--border-color); border-radius: 14px;
+      padding: 8px; z-index: 101; max-height: 60vh; overflow-y: auto;
+      min-width: 320px; opacity: 0; visibility: hidden;
+      transition: all var(--transition-fast) ease;
+    }
+    .page-dropdown.open { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .page-dropdown-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 14px; border-radius: 8px; cursor: pointer;
+      font-size: 13px; color: var(--text-secondary);
+      transition: all var(--transition-fast) ease;
+    }
+    .page-dropdown-item:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+    .page-dropdown-item.active { background: var(--bg-card-hover); color: var(--primary); font-weight: 600; }
+    .page-dropdown-item .item-num {
+      font-weight: 700; font-family: 'Inter', monospace; font-size: 11px;
+      min-width: 24px; text-align: center; padding: 2px 6px;
+      border-radius: 6px; background: var(--bg-card);
+    }
+
+    .fullscreen-btn {
+      position: fixed; top: 16px; right: 16px; z-index: 100;
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: rgba(255,255,255,0.8); backdrop-filter: blur(8px);
+      color: var(--text-muted); font-size: 14px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition-fast) ease;
+    }
+    .fullscreen-btn:hover { color: var(--primary); }
+
+    @keyframes shimmer { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .slide.active .anim-item { animation: fadeInUp 0.5s ease forwards; opacity: 0; }
+    .slide.active .anim-item:nth-child(1){animation-delay:0.1s}
+    .slide.active .anim-item:nth-child(2){animation-delay:0.15s}
+    .slide.active .anim-item:nth-child(3){animation-delay:0.2s}
+    .slide.active .anim-item:nth-child(4){animation-delay:0.25s}
+    .slide.active .anim-item:nth-child(5){animation-delay:0.3s}
+    .slide.active .anim-item:nth-child(6){animation-delay:0.35s}
+    .slide.active .anim-item:nth-child(7){animation-delay:0.4s}
+    .slide.active .anim-item:nth-child(8){animation-delay:0.45s}
+    .slide.active .anim-item:nth-child(9){animation-delay:0.5s}
+    .slide.active .anim-item:nth-child(10){animation-delay:0.55s}
+    .slide.active .anim-item:nth-child(11){animation-delay:0.6s}
+    .slide.active .anim-item:nth-child(12){animation-delay:0.65s}
+
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<div class="presentation" id="presentation">
+
+  <!-- ========== SLIDE 0: COVER ========== -->
+  <div class="slide active" data-slide="0">
+    <div class="slide-content cover-content">
+      <div class="cover-title anim-item">BMAD Method</div>
+      <div class="cover-subtitle anim-item">คู่มือการใช้งาน — วิธีติดตั้ง, คำสั่งทั้งหมด, และแนวทางสำหรับ BA</div>
+      <div class="cover-roles">
+        <div class="role-chip anim-item">🧙 AI Agents</div>
+        <div class="role-chip anim-item">📊 Business Analysis</div>
+        <div class="role-chip anim-item">🚀 Full Lifecycle</div>
+        <div class="role-chip anim-item">v6.0.4</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 1: BMAD คืออะไร ========== -->
+  <div class="slide" data-slide="1">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>ภาพรวม</div>
+      <div class="slide-number">01</div>
+    </div>
+    <div class="slide-title anim-item">BMAD Method คืออะไร?</div>
+    <div class="slide-subtitle anim-item">BMad Agentic Development Method</div>
+    <div class="slide-content">
+      <div class="stats-row" style="margin-bottom: clamp(16px, 2vw, 28px);">
+        <div class="stat-item anim-item">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Modules</div>
+          <div class="stat-desc">แบ่งตามความเชี่ยวชาญ</div>
+        </div>
+        <div class="stat-item anim-item">
+          <div class="stat-number">25+</div>
+          <div class="stat-label">AI Agents</div>
+          <div class="stat-desc">ผู้เชี่ยวชาญเฉพาะด้าน</div>
+        </div>
+        <div class="stat-item anim-item">
+          <div class="stat-number">70+</div>
+          <div class="stat-label">Workflows</div>
+          <div class="stat-desc">กระบวนการอัตโนมัติ</div>
+        </div>
+        <div class="stat-item anim-item">
+          <div class="stat-number">v6</div>
+          <div class="stat-label">Version</div>
+          <div class="stat-desc">เสถียร พร้อมใช้งาน</div>
+        </div>
+      </div>
+      <ul class="bullet-list" style="max-width: 700px; margin: 0 auto;">
+        <li class="anim-item"><span class="bullet"></span>แพลตฟอร์มที่ใช้ <span class="hl hl-blue">AI Agents</span> ช่วยพัฒนาซอฟต์แวร์ครบวงจร</li>
+        <li class="anim-item"><span class="bullet"></span>ครอบคลุมตั้งแต่ Analysis → Design → Development → Testing</li>
+        <li class="anim-item"><span class="bullet"></span>ทำงานผ่าน <span class="hl hl-blue">Slash Commands</span> ใน Claude Code</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 2: การติดตั้ง ========== -->
+  <div class="slide" data-slide="2">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>เริ่มต้น</div>
+      <div class="slide-number">02</div>
+    </div>
+    <div class="slide-title anim-item">การติดตั้ง BMAD</div>
+    <div class="slide-subtitle anim-item">เริ่มต้นได้ในไม่กี่นาที</div>
+    <div class="slide-content">
+      <div class="timeline">
+        <div class="timeline-item anim-item">
+          <div class="timeline-date">ขั้นตอนที่ 1</div>
+          <div class="timeline-title">เปิด Terminal ใน Project</div>
+          <div class="timeline-desc">เปิด Terminal หรือ Command Line ในโฟลเดอร์โปรเจกต์ที่ต้องการ</div>
+        </div>
+        <div class="timeline-item anim-item">
+          <div class="timeline-date">ขั้นตอนที่ 2</div>
+          <div class="timeline-title">รันคำสั่ง <code>npx bmad-method install</code></div>
+          <div class="timeline-desc">ระบบจะดาวน์โหลดและเริ่มกระบวนการติดตั้งอัตโนมัติ</div>
+        </div>
+        <div class="timeline-item anim-item">
+          <div class="timeline-date">ขั้นตอนที่ 3</div>
+          <div class="timeline-title">ตอบคำถามการตั้งค่า</div>
+          <div class="timeline-desc">ชื่อผู้ใช้, ภาษาที่ต้องการ, IDE ที่ใช้ (รองรับ claude-code)</div>
+        </div>
+        <div class="timeline-item anim-item">
+          <div class="timeline-date">ขั้นตอนที่ 4</div>
+          <div class="timeline-title">เลือก Modules</div>
+          <div class="timeline-desc">เลือก modules ที่ต้องการ เช่น BMM, CIS, TEA</div>
+        </div>
+        <div class="timeline-item anim-item">
+          <div class="timeline-date">ขั้นตอนที่ 5</div>
+          <div class="timeline-title">พร้อมใช้งาน!</div>
+          <div class="timeline-desc">ระบบสร้างโฟลเดอร์ <code>_bmad/</code> พร้อม config, agents, workflows ทั้งหมด</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 3: Modules ========== -->
+  <div class="slide" data-slide="3">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>โครงสร้าง</div>
+      <div class="slide-number">03</div>
+    </div>
+    <div class="slide-title anim-item">Modules ทั้งหมด</div>
+    <div class="slide-subtitle anim-item">แบ่งตามความเชี่ยวชาญ — ติดตั้งเฉพาะที่ต้องการ</div>
+    <div class="slide-content">
+      <div class="cards-grid cols-3">
+        <div class="card anim-item">
+          <div class="card-icon">🧙</div>
+          <div class="card-title">Core</div>
+          <div class="card-desc">BMad Master, Brainstorming, Party Mode — แกนหลักที่ขาดไม่ได้</div>
+          <span class="card-tag tag-blue">built-in</span>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">📋</div>
+          <div class="card-title">BMM</div>
+          <div class="card-desc">Analyst, PM, Architect, Dev, QA, UX Designer, Scrum Master, Tech Writer</div>
+          <span class="card-tag tag-blue">built-in</span>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">🤖</div>
+          <div class="card-title">BMB</div>
+          <div class="card-desc">BMAD Builder — สร้าง/แก้ไข Agents, Workflows, Modules</div>
+          <span class="card-tag tag-purple">external</span>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">🧠</div>
+          <div class="card-title">CIS</div>
+          <div class="card-desc">Creative Intelligence — Brainstorming, Design Thinking, Innovation</div>
+          <span class="card-tag tag-orange">external</span>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">🎮</div>
+          <div class="card-title">GDS</div>
+          <div class="card-desc">Game Dev Studio — Game design, development, testing ครบวงจร</div>
+          <span class="card-tag tag-green">external</span>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">🧪</div>
+          <div class="card-title">TEA</div>
+          <div class="card-desc">Test Architecture — Test frameworks, automation, CI/CD pipeline</div>
+          <span class="card-tag tag-red">external</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 4: Commands - Analysis ========== -->
+  <div class="slide" data-slide="4">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>คำสั่ง</div>
+      <div class="slide-number">04</div>
+    </div>
+    <div class="slide-title anim-item">Analysis & Planning</div>
+    <div class="slide-subtitle anim-item">คำสั่งสำหรับช่วงวิเคราะห์และวางแผน</div>
+    <div class="slide-content">
+      <div class="cmd-list">
+        <div class="cmd-item anim-item highlight-blue">
+          <span class="cmd-icon">🧙</span>
+          <span class="cmd-name">/bmad-agent-bmad-master</span>
+          <span class="cmd-desc">เรียก BMad Master — ศูนย์กลางบัญชาการ</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📊</span>
+          <span class="cmd-name">/bmad-agent-bmm-analyst</span>
+          <span class="cmd-desc">เรียก Mary — Business Analyst</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📋</span>
+          <span class="cmd-name">/bmad-agent-bmm-pm</span>
+          <span class="cmd-desc">เรียก John — Product Manager</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📑</span>
+          <span class="cmd-name">/bmad-bmm-create-product-brief</span>
+          <span class="cmd-desc">สร้าง Product Brief</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">🔍</span>
+          <span class="cmd-name">/bmad-bmm-domain-research</span>
+          <span class="cmd-desc">วิจัย Domain / Industry</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📈</span>
+          <span class="cmd-name">/bmad-bmm-market-research</span>
+          <span class="cmd-desc">วิจัยตลาดและคู่แข่ง</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">🔬</span>
+          <span class="cmd-name">/bmad-bmm-technical-research</span>
+          <span class="cmd-desc">วิจัยเทคโนโลยี</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📝</span>
+          <span class="cmd-name">/bmad-bmm-create-prd</span>
+          <span class="cmd-desc">สร้าง PRD (Product Requirements Document)</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">✏️</span>
+          <span class="cmd-name">/bmad-bmm-edit-prd</span>
+          <span class="cmd-desc">แก้ไข PRD ที่มีอยู่</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">✅</span>
+          <span class="cmd-name">/bmad-bmm-validate-prd</span>
+          <span class="cmd-desc">ตรวจสอบ PRD ตามมาตรฐาน</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 5: Commands - Design ========== -->
+  <div class="slide" data-slide="5">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>คำสั่ง</div>
+      <div class="slide-number">05</div>
+    </div>
+    <div class="slide-title anim-item">Design & Architecture</div>
+    <div class="slide-subtitle anim-item">คำสั่งสำหรับออกแบบและวางสถาปัตยกรรม</div>
+    <div class="slide-content">
+      <div class="cards-grid cols-2">
+        <div class="card anim-item">
+          <div class="card-icon">🎨</div>
+          <div class="card-title">/bmad-agent-bmm-ux-designer</div>
+          <div class="card-desc">เรียก Sally — UX Designer ผู้เชี่ยวชาญ</div>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">🏗️</div>
+          <div class="card-title">/bmad-agent-bmm-architect</div>
+          <div class="card-desc">เรียก Winston — System Architect</div>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">/bmad-bmm-create-ux-design</div>
+          <div class="card-desc">วางแผน UX patterns และ design specs</div>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">⚙️</div>
+          <div class="card-title">/bmad-bmm-create-architecture</div>
+          <div class="card-desc">สร้าง Architecture solution design</div>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">📦</div>
+          <div class="card-title">/bmad-bmm-create-epics-and-stories</div>
+          <div class="card-desc">แตก Requirements เป็น Epics & Stories</div>
+        </div>
+        <div class="card anim-item">
+          <div class="card-icon">🔒</div>
+          <div class="card-title">/bmad-bmm-check-implementation-readiness</div>
+          <div class="card-desc">ตรวจสอบความพร้อมก่อนเริ่ม Dev</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 6: Commands - Implementation ========== -->
+  <div class="slide" data-slide="6">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>คำสั่ง</div>
+      <div class="slide-number">06</div>
+    </div>
+    <div class="slide-title anim-item">Implementation & Sprint</div>
+    <div class="slide-subtitle anim-item">คำสั่งสำหรับ Sprint และการพัฒนา</div>
+    <div class="slide-content">
+      <div class="cmd-list">
+        <div class="cmd-item anim-item highlight-blue">
+          <span class="cmd-icon">🏃</span>
+          <span class="cmd-name">/bmad-agent-bmm-sm</span>
+          <span class="cmd-desc">เรียก Bob — Scrum Master</span>
+        </div>
+        <div class="cmd-item anim-item highlight-blue">
+          <span class="cmd-icon">💻</span>
+          <span class="cmd-name">/bmad-agent-bmm-dev</span>
+          <span class="cmd-desc">เรียก Amelia — Developer</span>
+        </div>
+        <div class="cmd-item anim-item highlight-blue">
+          <span class="cmd-icon">🧪</span>
+          <span class="cmd-name">/bmad-agent-bmm-qa</span>
+          <span class="cmd-desc">เรียก Quinn — QA Engineer</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📅</span>
+          <span class="cmd-name">/bmad-bmm-sprint-planning</span>
+          <span class="cmd-desc">วางแผน Sprint</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📊</span>
+          <span class="cmd-name">/bmad-bmm-sprint-status</span>
+          <span class="cmd-desc">ดูสถานะ Sprint</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📖</span>
+          <span class="cmd-name">/bmad-bmm-create-story</span>
+          <span class="cmd-desc">สร้าง Story พร้อม context</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">🔨</span>
+          <span class="cmd-name">/bmad-bmm-dev-story</span>
+          <span class="cmd-desc">Implement Story</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">🔍</span>
+          <span class="cmd-name">/bmad-bmm-code-review</span>
+          <span class="cmd-desc">Adversarial Code Review</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">🔄</span>
+          <span class="cmd-name">/bmad-bmm-correct-course</span>
+          <span class="cmd-desc">แก้ไขทิศทาง Sprint</span>
+        </div>
+        <div class="cmd-item anim-item">
+          <span class="cmd-icon">📋</span>
+          <span class="cmd-name">/bmad-bmm-retrospective</span>
+          <span class="cmd-desc">สรุปบทเรียนหลังจบ Epic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 7: Quick Flow ========== -->
+  <div class="slide" data-slide="7">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>Quick Flow</div>
+      <div class="slide-number">07</div>
+    </div>
+    <div class="slide-title anim-item">Quick Flow — ทำงานเร็ว</div>
+    <div class="slide-subtitle anim-item">สำหรับงานเล็กที่ต้องการความเร็ว ไม่ต้องผ่านกระบวนการเต็ม</div>
+    <div class="slide-content">
+      <div class="cards-grid cols-3">
+        <div class="card anim-item highlight-blue">
+          <div class="card-icon">📝</div>
+          <div class="card-title">/bmad-bmm-quick-spec</div>
+          <div class="card-desc">สร้าง Quick Tech Spec — กระชับ ได้ใจความ พร้อม implement</div>
+          <span class="card-tag tag-blue">สร้าง Spec</span>
+        </div>
+        <div class="card anim-item highlight-green">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">/bmad-bmm-quick-dev</div>
+          <div class="card-desc">Implement จาก Quick Spec — เขียนโค้ดเลย ไม่ต้องรอ</div>
+          <span class="card-tag tag-green">Implement</span>
+        </div>
+        <div class="card anim-item highlight-purple">
+          <div class="card-icon">🚀</div>
+          <div class="card-title">/bmad-agent-bmm-quick-flow-solo-dev</div>
+          <div class="card-desc">เรียก Barry — Solo Dev ที่ทำทั้ง spec และ implement</div>
+          <span class="card-tag tag-purple">Agent</span>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: clamp(16px, 2vw, 28px);">
+        <ul class="bullet-list" style="max-width: 500px; margin: 0 auto;">
+          <li class="anim-item"><span class="bullet"></span>เหมาะกับ bug fix, feature เล็กๆ, refactoring</li>
+          <li class="anim-item"><span class="bullet"></span>ข้ามขั้นตอน PRD, UX, Architecture ไปเลย</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 8: Utility & Creative ========== -->
+  <div class="slide" data-slide="8">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>คำสั่ง</div>
+      <div class="slide-number">08</div>
+    </div>
+    <div class="slide-title anim-item">Utility & Creative</div>
+    <div class="slide-subtitle anim-item">เครื่องมือเสริมและงานสร้างสรรค์</div>
+    <div class="slide-content">
+      <div class="two-col">
+        <div class="col-section">
+          <div class="section-label anim-item">สร้างสรรค์ & ร่วมมือ</div>
+          <div class="cmd-list">
+            <div class="cmd-item anim-item">
+              <span class="cmd-icon">🧠</span>
+              <span class="cmd-name">/bmad-brainstorming</span>
+              <span class="cmd-desc">Brainstorming Session</span>
+            </div>
+            <div class="cmd-item anim-item">
+              <span class="cmd-icon">🎉</span>
+              <span class="cmd-name">/bmad-party-mode</span>
+              <span class="cmd-desc">คุยกับหลาย Agents พร้อมกัน</span>
+            </div>
+            <div class="cmd-item anim-item">
+              <span class="cmd-icon">❓</span>
+              <span class="cmd-name">/bmad-help</span>
+              <span class="cmd-desc">ขอคำแนะนำว่าควรทำอะไรต่อ</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-section">
+          <div class="section-label anim-item">รีวิว & เอกสาร</div>
+          <div class="cmd-list">
+            <div class="cmd-item anim-item">
+              <span class="cmd-icon">👁️</span>
+              <span class="cmd-name">/bmad-review-adversarial-general</span>
+              <span class="cmd-desc">Adversarial Review</span>
+            </div>
+            <div class="cmd-item anim-item">
+              <span class="cmd-icon">🔎</span>
+              <span class="cmd-name">/bmad-review-edge-case-hunter</span>
+              <span class="cmd-desc">หา Edge Cases</span>
+            </div>
+            <div class="cmd-item anim-item">
+              <span class="cmd-icon">✍️</span>
+              <span class="cmd-name">/bmad-editorial-review-prose</span>
+              <span class="cmd-desc">รีวิวการเขียน</span>
+            </div>
+            <div class="cmd-item anim-item">
+              <span class="cmd-icon">📂</span>
+              <span class="cmd-name">/bmad-bmm-document-project</span>
+              <span class="cmd-desc">สร้างเอกสารโปรเจกต์</span>
+            </div>
+            <div class="cmd-item anim-item">
+              <span class="cmd-icon">🧪</span>
+              <span class="cmd-name">/bmad-bmm-qa-generate-e2e-tests</span>
+              <span class="cmd-desc">สร้าง E2E Tests อัตโนมัติ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 9: BA Commands ========== -->
+  <div class="slide" data-slide="9">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>⭐ สำหรับ BA</div>
+      <div class="slide-number">09</div>
+    </div>
+    <div class="slide-title anim-item">คำสั่งที่ BA ควรใช้บ่อย</div>
+    <div class="slide-subtitle anim-item">แบ่งตามช่วงเวลาการทำงาน</div>
+    <div class="slide-content">
+      <div class="split-row">
+        <div class="mini-card anim-item" style="border-left: 3px solid var(--primary);">
+          <div class="mini-card-title">🔍 Discovery & Analysis</div>
+          <ul>
+            <li><code>/bmad-agent-bmm-analyst</code> เรียก Mary วิเคราะห์ Requirements</li>
+            <li><code>/bmad-bmm-domain-research</code> วิจัย Domain</li>
+            <li><code>/bmad-bmm-market-research</code> วิจัยตลาด & คู่แข่ง</li>
+            <li><code>/bmad-bmm-create-product-brief</code> สร้าง Product Brief</li>
+          </ul>
+        </div>
+        <div class="mini-card anim-item" style="border-left: 3px solid var(--secondary);">
+          <div class="mini-card-title">📝 Planning & Docs</div>
+          <ul>
+            <li><code>/bmad-agent-bmm-pm</code> เรียก John ช่วยทำ PRD</li>
+            <li><code>/bmad-bmm-create-prd</code> สร้าง PRD</li>
+            <li><code>/bmad-bmm-validate-prd</code> ตรวจสอบ PRD</li>
+            <li><code>/bmad-bmm-create-ux-design</code> วางแผน UX</li>
+            <li><code>/bmad-bmm-create-epics-and-stories</code> แตก Epics</li>
+          </ul>
+        </div>
+        <div class="mini-card anim-item" style="border-left: 3px solid var(--accent-purple);">
+          <div class="mini-card-title">✅ Sprint & Review</div>
+          <ul>
+            <li><code>/bmad-bmm-sprint-planning</code> วางแผน Sprint</li>
+            <li><code>/bmad-bmm-sprint-status</code> ตรวจสอบสถานะ</li>
+            <li><code>/bmad-bmm-check-implementation-readiness</code> ตรวจสอบความพร้อม</li>
+            <li><code>/bmad-bmm-retrospective</code> สรุปบทเรียน</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 10: วิธีเรียกใช้ ========== -->
+  <div class="slide" data-slide="10">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>วิธีใช้</div>
+      <div class="slide-number">10</div>
+    </div>
+    <div class="slide-title anim-item">วิธีเรียกใช้งาน BMAD</div>
+    <div class="slide-subtitle anim-item">3 วิธีหลักในการเริ่มต้นใช้งาน</div>
+    <div class="slide-content">
+      <div class="cards-grid cols-3" style="margin-bottom: clamp(12px, 1.5vw, 20px);">
+        <div class="card anim-item highlight-blue">
+          <div class="card-icon">⌨️</div>
+          <div class="card-title">วิธีที่ 1: พิมพ์ตรงๆ</div>
+          <div class="card-desc">พิมพ์ Slash Command เลย เช่น <code>/bmad-bmm-create-prd</code></div>
+          <span class="card-tag tag-blue">เร็วที่สุด</span>
+        </div>
+        <div class="card anim-item highlight-green">
+          <div class="card-icon">🧙</div>
+          <div class="card-title">วิธีที่ 2: ผ่าน Agent</div>
+          <div class="card-desc">เรียก <code>/bmad-agent-bmad-master</code> แล้วเลือกจากเมนู</div>
+          <span class="card-tag tag-green">มี Guide</span>
+        </div>
+        <div class="card anim-item highlight-purple">
+          <div class="card-icon">❓</div>
+          <div class="card-title">วิธีที่ 3: ถาม Help</div>
+          <div class="card-desc">พิมพ์ <code>/bmad-help</code> แล้วบอกว่าอยากทำอะไร</div>
+          <span class="card-tag tag-purple">แนะนำ</span>
+        </div>
+      </div>
+      <ul class="bullet-list" style="max-width: 600px; margin: 0 auto;">
+        <li class="anim-item"><span class="bullet"></span>ทุก workflow เป็นแบบ <span class="hl hl-blue">interactive</span> — ถาม-ตอบกับ AI ทีละขั้น</li>
+        <li class="anim-item"><span class="bullet"></span>Output ทั้งหมดบันทึกไว้ในโฟลเดอร์ <code>_bmad-output/</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 11: Flow ========== -->
+  <div class="slide" data-slide="11">
+    <div class="slide-header">
+      <div class="slide-badge"><span class="dot"></span>กระบวนการ</div>
+      <div class="slide-number">11</div>
+    </div>
+    <div class="slide-title anim-item">Flow การทำงานครบวงจร</div>
+    <div class="slide-subtitle anim-item">จากไอเดียสู่ซอฟต์แวร์ที่พร้อมส่งมอบ</div>
+    <div class="slide-content">
+      <div class="flow-container">
+        <div class="flow-row anim-item">
+          <div class="flow-step highlight-blue"><span class="icon">📑</span> Product Brief</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">🔍</span> Research</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step highlight-blue"><span class="icon">📝</span> PRD</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">🎨</span> UX Design</div>
+        </div>
+        <div class="flow-row anim-item">
+          <div class="flow-step"><span class="icon">🏗️</span> Architecture</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step highlight-blue"><span class="icon">📦</span> Epics & Stories</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">📅</span> Sprint Planning</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">📖</span> Create Story</div>
+        </div>
+        <div class="flow-row anim-item">
+          <div class="flow-step"><span class="icon">🔨</span> Dev Story</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">🔍</span> Code Review</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step highlight-blue"><span class="icon">📊</span> Sprint Status</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step highlight-purple"><span class="icon">📋</span> Retrospective</div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: clamp(12px, 1.5vw, 20px);">
+        <ul class="bullet-list" style="max-width: 500px; margin: 0 auto;">
+          <li class="anim-item"><span class="bullet" style="background: var(--primary);"></span><span class="hl hl-blue">สีน้ำเงิน</span> = ขั้นตอนที่ BA มีส่วนร่วมสูง</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 12: SUMMARY ========== -->
+  <div class="slide" data-slide="12">
+    <div class="slide-content end-content">
+      <div class="end-title anim-item">เริ่มต้นเลย!</div>
+      <div class="slide-subtitle anim-item" style="max-width: 550px;">BMAD Method ช่วยให้ทำงานได้เร็วขึ้นด้วย AI Agents</div>
+      <div class="cards-grid cols-2 anim-item" style="max-width: 700px; margin-top: clamp(12px, 1.5vw, 20px);">
+        <div class="card" style="text-align: center;">
+          <div class="card-icon">🚀</div>
+          <div class="card-title">ติดตั้ง</div>
+          <div class="card-desc"><code>npx bmad-method install</code></div>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div class="card-icon">❓</div>
+          <div class="card-title">ไม่แน่ใจ?</div>
+          <div class="card-desc">พิมพ์ <code>/bmad-help</code></div>
+        </div>
+      </div>
+      <div class="cover-roles anim-item" style="margin-top: clamp(12px, 1.5vw, 20px);">
+        <div class="role-chip">BA ใช้เป็นเครื่องมือหลักได้ทุกขั้นตอน</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<button class="fullscreen-btn" id="fullscreenBtn" title="Fullscreen (F)">&#x26F6;</button>
+<div class="page-dropdown" id="pageDropdown"></div>
+<div class="nav-bar" id="navBar">
+  <button class="nav-btn" id="homeBtn" title="Home (H)" style="font-size:18px;">&#x2302;</button>
+  <button class="nav-btn" id="prevBtn" title="Previous">&#x2039;</button>
+  <div class="nav-progress" id="navProgress"></div>
+  <button class="nav-btn" id="nextBtn" title="Next">&#x203A;</button>
+  <div class="nav-counter" id="navCounter">1 / 13</div>
+  <button class="nav-btn" id="menuBtn" title="Slide Menu">&#x2630;</button>
+</div>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let currentSlide = 0, animTimer = null, dropdownOpen = false;
+
+  const slideTitles = [
+    'BMAD Method — หน้าปก',
+    'BMAD Method คืออะไร?',
+    'การติดตั้ง BMAD',
+    'Modules ทั้งหมด',
+    'คำสั่ง: Analysis & Planning',
+    'คำสั่ง: Design & Architecture',
+    'คำสั่ง: Implementation & Sprint',
+    'Quick Flow — ทำงานเร็ว',
+    'คำสั่ง: Utility & Creative',
+    'คำสั่งที่ BA ควรใช้บ่อย ⭐',
+    'วิธีเรียกใช้งาน BMAD',
+    'Flow การทำงานครบวงจร',
+    'สรุป — เริ่มต้นเลย!',
+  ];
+
+  const navProgress = document.getElementById('navProgress');
+
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToSlide(i));
+    navProgress.appendChild(dot);
+  }
+
+  const dropdown = document.getElementById('pageDropdown');
+  slideTitles.forEach((title, i) => {
+    const item = document.createElement('div');
+    item.className = 'page-dropdown-item' + (i === 0 ? ' active' : '');
+    item.innerHTML = '<span class="item-num">' + String(i).padStart(2, '0') + '</span> ' + title;
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown(false);
+      requestAnimationFrame(() => goToSlide(i));
+    });
+    dropdown.appendChild(item);
+  });
+
+  function goToSlide(index) {
+    if (index === currentSlide || index < 0 || index >= totalSlides) return;
+    if (animTimer) {
+      clearTimeout(animTimer);
+      slides.forEach(s => { s.classList.remove('active', 'prev'); s.style.transform = ''; });
+    }
+    const prev = slides[currentSlide], next = slides[index];
+    const goingForward = index > currentSlide;
+    prev.classList.remove('active');
+    if (goingForward) prev.classList.add('prev');
+    next.style.transition = 'none';
+    next.style.transform = goingForward ? 'translateX(60px)' : 'translateX(-60px)';
+    next.style.opacity = '0';
+    next.offsetHeight;
+    next.style.transition = next.style.transform = next.style.opacity = '';
+    next.classList.add('active');
+    currentSlide = index;
+    updateUI();
+    animTimer = setTimeout(() => {
+      prev.classList.remove('prev');
+      prev.style.transform = '';
+      animTimer = null;
+    }, 500);
+  }
+
+  function updateUI() {
+    document.getElementById('navCounter').textContent = (currentSlide + 1) + ' / ' + totalSlides;
+    navProgress.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    document.getElementById('prevBtn').disabled = currentSlide === 0;
+    document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+    document.getElementById('homeBtn').disabled = currentSlide === 0;
+    dropdown.querySelectorAll('.page-dropdown-item').forEach((item, i) => item.classList.toggle('active', i === currentSlide));
+  }
+
+  function toggleDropdown(state) {
+    dropdownOpen = state !== undefined ? state : !dropdownOpen;
+    dropdown.classList.toggle('open', dropdownOpen);
+  }
+
+  document.getElementById('homeBtn').addEventListener('click', () => goToSlide(0));
+  document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+  document.getElementById('menuBtn').addEventListener('click', (e) => { e.stopPropagation(); toggleDropdown(); });
+  document.getElementById('fullscreenBtn').addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goToSlide(currentSlide + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); goToSlide(currentSlide - 1); }
+    else if (e.key === 'Home' || e.key === 'h' || e.key === 'H') { e.preventDefault(); goToSlide(0); }
+    else if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides - 1); }
+    else if (e.key === 'f' || e.key === 'F') { document.getElementById('fullscreenBtn').click(); }
+    else if (e.key === 'Escape') { toggleDropdown(false); }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? goToSlide(currentSlide + 1) : goToSlide(currentSlide - 1);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (dropdownOpen && !dropdown.contains(e.target) && e.target.id !== 'menuBtn') toggleDropdown(false);
+  });
+
+  updateUI();
+})();
+</script>
+</body>
+</html>
