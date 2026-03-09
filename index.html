@@ -437,6 +437,64 @@
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 4px; }
+
+    /* ===== Mobile Responsive ===== */
+    @media (max-width: 768px) {
+      .presentation {
+        height: 100vh; max-height: 100vh; max-width: 100vw;
+        width: 100vw;
+      }
+      .slide {
+        padding: 16px 16px 80px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .slide-content {
+        overflow: visible;
+      }
+      .slide-title { font-size: clamp(22px, 6vw, 32px); }
+      .slide-subtitle { font-size: clamp(13px, 3.5vw, 16px); }
+
+      .cards-grid.cols-3, .cards-grid.cols-2 { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .split-row { flex-direction: column; }
+      .mini-card { max-width: 100%; min-width: unset; }
+
+      .flow-row { flex-direction: column; gap: 6px; }
+      .flow-arrow { transform: rotate(90deg); font-size: 14px; }
+
+      .stats-row { gap: 8px; }
+      .stat-item { min-width: 70px; padding: 8px; }
+      .stat-number { font-size: clamp(24px, 8vw, 36px); }
+
+      .cmd-list { gap: 4px; }
+      .cmd-item { flex-wrap: wrap; padding: 8px 10px; }
+      .cmd-name { min-width: unset; font-size: 11px; }
+      .cmd-desc { font-size: 11px; flex-basis: 100%; padding-left: 32px; }
+
+      .cover-title { font-size: clamp(32px, 10vw, 48px); }
+      .cover-subtitle { font-size: clamp(14px, 4vw, 18px); }
+
+      .terminal-body { min-height: 180px; max-height: 50vh; font-size: 11px; }
+
+      .card { padding: 10px; }
+      .card-icon { font-size: 24px; margin-bottom: 6px; }
+      .card-title { font-size: 14px; }
+      .card-desc { font-size: 12px; }
+
+      /* Mobile nav: hide dots and menu, keep home/prev/next */
+      .nav-progress { display: none !important; }
+      #menuBtn { display: none !important; }
+
+      .nav-bar {
+        gap: 8px; padding: 6px 12px;
+        bottom: 12px;
+      }
+      .nav-btn { width: 44px; height: 44px; font-size: 18px; }
+      .nav-counter { font-size: 12px; min-width: 40px; }
+
+      .fullscreen-btn { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -910,8 +968,8 @@
   <button class="nav-btn" id="homeBtn" title="Home (H)" style="font-size:18px;">&#x2302;</button>
   <button class="nav-btn" id="prevBtn" title="Previous">&#x2039;</button>
   <div class="nav-progress" id="navProgress"></div>
+  <div class="nav-counter" id="navCounter">1 / 18</div>
   <button class="nav-btn" id="nextBtn" title="Next">&#x203A;</button>
-  <div class="nav-counter" id="navCounter">1 / 17</div>
   <button class="nav-btn" id="menuBtn" title="Slide Menu">&#x2630;</button>
 </div>
 
