@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BMAD Method - คู่มือการใช้งาน</title>
+  <title>BMAD Method — Sharing Session</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
     :root {
       --primary: #1a237e; --primary-dark: #0d1453; --primary-light: #3949ab;
@@ -75,14 +75,14 @@
     }
 
     .slide-title {
-      font-size: clamp(22px, 3vw, 48px); font-weight: 800;
+      font-size: clamp(26px, 3.5vw, 56px); font-weight: 800;
       line-height: 1.15; margin-bottom: clamp(6px, 0.8vw, 12px);
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .slide-subtitle {
-      font-size: clamp(12px, 1.3vw, 18px); color: var(--text-secondary);
+      font-size: clamp(14px, 1.5vw, 22px); color: var(--text-secondary);
       font-weight: 400; line-height: 1.6; max-width: 700px;
     }
     .slide-content {
@@ -96,14 +96,14 @@
       gap: clamp(14px, 1.8vw, 24px);
     }
     .cover-title {
-      font-size: clamp(32px, 5vw, 72px); font-weight: 900;
+      font-size: clamp(40px, 5.5vw, 80px); font-weight: 900;
       letter-spacing: -0.03em;
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       animation: shimmer 4s ease infinite; background-size: 200% 200%;
     }
     .cover-subtitle {
-      font-size: clamp(13px, 1.6vw, 22px); color: var(--text-secondary);
+      font-size: clamp(15px, 1.8vw, 26px); color: var(--text-secondary);
       font-weight: 400; max-width: 600px; line-height: 1.6;
     }
     .cover-roles {
@@ -111,8 +111,8 @@
       margin-top: clamp(6px, 0.8vw, 12px); flex-wrap: wrap; justify-content: center;
     }
     .role-chip {
-      padding: clamp(7px, 0.7vw, 11px) clamp(14px, 1.4vw, 24px);
-      border-radius: 50px; font-size: clamp(10px, 1vw, 14px); font-weight: 600;
+      padding: clamp(8px, 0.8vw, 12px) clamp(16px, 1.6vw, 28px);
+      border-radius: 50px; font-size: clamp(12px, 1.1vw, 16px); font-weight: 600;
       border: 1px solid var(--border-color); background: var(--bg-card);
       color: var(--text-secondary); transition: all var(--transition-fast) ease;
     }
@@ -135,16 +135,15 @@
     }
     .cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
     .cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .cards-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
     .card {
       padding: clamp(12px, 1.4vw, 22px); border-radius: 14px;
       border: 1px solid var(--border-color); background: var(--bg-card);
       transition: all var(--transition-fast) ease;
     }
     .card:hover { transform: translateY(-3px); background: var(--bg-card-hover); }
-    .card-icon { font-size: clamp(20px, 2.2vw, 34px); margin-bottom: clamp(6px, 0.8vw, 10px); }
-    .card-title { font-size: clamp(12px, 1.2vw, 16px); font-weight: 700; margin-bottom: clamp(3px, 0.4vw, 6px); }
-    .card-desc { font-size: clamp(9px, 0.9vw, 13px); color: var(--text-secondary); line-height: 1.5; }
+    .card-icon { font-size: clamp(24px, 2.5vw, 40px); margin-bottom: clamp(8px, 1vw, 14px); }
+    .card-title { font-size: clamp(14px, 1.3vw, 18px); font-weight: 700; margin-bottom: clamp(4px, 0.5vw, 8px); }
+    .card-desc { font-size: clamp(11px, 1.05vw, 15px); color: var(--text-secondary); line-height: 1.6; }
     .card-tag {
       display: inline-block; padding: 2px 8px; border-radius: 12px;
       font-size: clamp(8px, 0.75vw, 11px); font-weight: 600; margin-top: 6px;
@@ -165,8 +164,8 @@
     }
     .flow-step {
       display: flex; align-items: center; gap: clamp(4px, 0.5vw, 8px);
-      padding: clamp(8px, 0.8vw, 13px) clamp(10px, 1.1vw, 18px);
-      border-radius: 10px; font-size: clamp(9px, 0.95vw, 13px); font-weight: 500;
+      padding: clamp(10px, 1vw, 16px) clamp(14px, 1.4vw, 22px);
+      border-radius: 10px; font-size: clamp(11px, 1.1vw, 15px); font-weight: 500;
       transition: all var(--transition-fast) ease; white-space: nowrap;
       border: 1px solid var(--border-color); background: var(--bg-card);
     }
@@ -201,39 +200,26 @@
     .timeline-item:nth-child(5)::before { background: var(--accent-pink); }
     .timeline-date {
       font-size: clamp(9px, 0.85vw, 12px); font-weight: 700;
-      color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em;
-      margin-bottom: 2px;
+      color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;
     }
-    .timeline-title { font-size: clamp(12px, 1.2vw, 16px); font-weight: 700; margin-bottom: 2px; }
-    .timeline-desc { font-size: clamp(9px, 0.9vw, 13px); color: var(--text-secondary); line-height: 1.5; }
+    .timeline-title { font-size: clamp(14px, 1.3vw, 18px); font-weight: 700; margin-bottom: 3px; }
+    .timeline-desc { font-size: clamp(11px, 1.05vw, 15px); color: var(--text-secondary); line-height: 1.6; }
 
-    .split-row {
-      display: flex; gap: clamp(10px, 1.2vw, 18px);
-      justify-content: center; flex-wrap: wrap;
-    }
+    .split-row { display: flex; gap: clamp(10px, 1.2vw, 18px); justify-content: center; flex-wrap: wrap; }
     .mini-card {
       flex: 1; min-width: 180px; max-width: 380px;
       padding: clamp(12px, 1.2vw, 20px); border-radius: 12px;
       border: 1px solid var(--border-color); background: var(--bg-card);
     }
-    .mini-card-title {
-      font-size: clamp(11px, 1.1vw, 15px); font-weight: 700;
-      margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
-    }
-    .mini-card ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+    .mini-card-title { font-size: clamp(13px, 1.2vw, 17px); font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .mini-card ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
     .mini-card ul li {
-      font-size: clamp(9px, 0.85vw, 12px); color: var(--text-secondary);
+      font-size: clamp(10px, 0.95vw, 14px); color: var(--text-secondary);
       padding-left: 12px; position: relative; line-height: 1.5;
     }
-    .mini-card ul li::before {
-      content: '\203A'; position: absolute; left: 0;
-      color: var(--primary); font-weight: 700;
-    }
+    .mini-card ul li::before { content: '\203A'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
 
-    .two-col {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(16px, 2vw, 28px); max-width: 1200px; margin: 0 auto; width: 100%;
-    }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); max-width: 1200px; margin: 0 auto; width: 100%; }
     .col-section { display: flex; flex-direction: column; gap: clamp(8px, 1vw, 14px); }
 
     .section-label {
@@ -244,45 +230,33 @@
     }
     .bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(5px, 0.6vw, 9px); }
     .bullet-list li {
-      display: flex; align-items: flex-start; gap: clamp(6px, 0.7vw, 10px);
-      font-size: clamp(10px, 1vw, 14px); color: var(--text-secondary); line-height: 1.5;
+      display: flex; align-items: flex-start; gap: clamp(8px, 0.8vw, 12px);
+      font-size: clamp(12px, 1.15vw, 16px); color: var(--text-secondary); line-height: 1.6;
     }
-    .bullet-list li .bullet {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--primary); flex-shrink: 0; margin-top: 7px;
-    }
+    .bullet-list li .bullet { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 7px; }
 
-    .stats-row {
-      display: flex; justify-content: center; gap: clamp(16px, 2.5vw, 40px);
-      flex-wrap: wrap; max-width: 1000px; margin: 0 auto; width: 100%;
-    }
+    .stats-row { display: flex; justify-content: center; gap: clamp(16px, 2.5vw, 40px); flex-wrap: wrap; max-width: 1000px; margin: 0 auto; width: 100%; }
     .stat-item { text-align: center; padding: clamp(14px, 1.8vw, 26px); min-width: clamp(100px, 10vw, 160px); }
     .stat-number {
-      font-size: clamp(28px, 3.5vw, 56px); font-weight: 900; line-height: 1;
+      font-size: clamp(32px, 4vw, 64px); font-weight: 900; line-height: 1;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       margin-bottom: clamp(4px, 0.5vw, 8px);
     }
-    .stat-label {
-      font-size: clamp(10px, 1vw, 14px); font-weight: 600;
-      color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;
-    }
-    .stat-desc { font-size: clamp(9px, 0.85vw, 12px); color: var(--text-muted); margin-top: 3px; }
+    .stat-label { font-size: clamp(11px, 1.1vw, 15px); font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-desc { font-size: clamp(10px, 0.95vw, 13px); color: var(--text-muted); margin-top: 4px; }
 
     .cmd-list { display: flex; flex-direction: column; gap: clamp(4px, 0.5vw, 7px); width: 100%; max-width: 1100px; margin: 0 auto; }
     .cmd-item {
       display: flex; align-items: center; gap: clamp(8px, 1vw, 14px);
-      padding: clamp(6px, 0.7vw, 10px) clamp(10px, 1.2vw, 16px);
+      padding: clamp(8px, 0.9vw, 13px) clamp(12px, 1.4vw, 18px);
       border-radius: 8px; border: 1px solid var(--border-color);
       background: var(--bg-card); transition: all var(--transition-fast) ease;
-      font-size: clamp(9px, 0.9vw, 13px);
+      font-size: clamp(11px, 1.05vw, 15px);
     }
     .cmd-item:hover { background: var(--bg-card-hover); transform: translateX(3px); }
     .cmd-icon { font-size: clamp(14px, 1.4vw, 20px); flex-shrink: 0; width: clamp(24px, 2.4vw, 32px); text-align: center; }
-    .cmd-name {
-      font-family: 'Inter', monospace; font-weight: 600; color: var(--primary);
-      font-size: clamp(8px, 0.82vw, 12px); white-space: nowrap; min-width: clamp(140px, 18vw, 280px);
-    }
+    .cmd-name { font-family: 'Inter', monospace; font-weight: 600; color: var(--primary); font-size: clamp(10px, 0.95vw, 14px); white-space: nowrap; min-width: clamp(160px, 20vw, 300px); }
     .cmd-desc { color: var(--text-secondary); flex: 1; }
 
     .highlight-blue { background: var(--bg-card-hover) !important; border-color: var(--border-color) !important; }
@@ -293,11 +267,84 @@
     .hl-blue { color: var(--primary); }
 
     code {
-      font-family: 'Inter', monospace; background: var(--bg-card-hover);
+      font-family: 'JetBrains Mono', 'Inter', monospace; background: var(--bg-card-hover);
       padding: 2px 8px; border-radius: 6px; font-size: 0.9em;
       color: var(--primary); font-weight: 600;
     }
 
+    /* ===== Terminal Prototype ===== */
+    .terminal-window {
+      background: #1e1e2e; border-radius: 12px; overflow: hidden;
+      max-width: 900px; width: 100%; margin: 0 auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08);
+    }
+    .terminal-titlebar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px; background: #181825; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-dot.red { background: #f38ba8; }
+    .terminal-dot.yellow { background: #f9e2af; }
+    .terminal-dot.green { background: #a6e3a1; }
+    .terminal-tab { margin-left: 12px; font-size: 12px; color: #cdd6f4; font-family: 'JetBrains Mono', monospace; opacity: 0.7; }
+    .terminal-body {
+      padding: clamp(12px, 1.5vw, 20px); min-height: clamp(200px, 28vh, 340px);
+      max-height: clamp(260px, 36vh, 400px); overflow-y: auto;
+      font-family: 'JetBrains Mono', monospace; font-size: clamp(10px, 0.95vw, 14px);
+      line-height: 1.7; color: #cdd6f4;
+    }
+    .terminal-body::-webkit-scrollbar { width: 4px; }
+    .terminal-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+    .term-line { margin-bottom: 2px; display: none; }
+    .term-line.visible { display: block; animation: termFadeIn 0.3s ease forwards; }
+    @keyframes termFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .term-prompt { color: #a6e3a1; }
+    .term-cmd { color: #89b4fa; font-weight: 600; }
+    .term-ai { color: #f9e2af; }
+    .term-ai-text { color: #cdd6f4; }
+    .term-output { color: #94e2d5; }
+    .term-muted { color: #6c7086; }
+    .term-file { color: #f38ba8; }
+    .terminal-controls {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; background: #181825; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .term-btn {
+      padding: 6px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(137,180,250,0.15); color: #89b4fa;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+      cursor: pointer; transition: all var(--transition-fast) ease;
+    }
+    .term-btn:hover { background: rgba(137,180,250,0.25); }
+    .term-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .term-btn.reset { background: rgba(243,139,168,0.15); color: #f38ba8; border-color: rgba(243,139,168,0.2); }
+    .term-btn.reset:hover { background: rgba(243,139,168,0.25); }
+    .term-status { color: #6c7086; font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+
+    /* ===== Output Preview ===== */
+    .output-preview {
+      background: #1e1e2e; border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .output-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px; background: #181825; border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6c7086;
+    }
+    .output-header .file-icon { color: #f9e2af; }
+    .output-body {
+      padding: clamp(10px, 1.2vw, 16px);
+      font-family: 'JetBrains Mono', monospace; font-size: clamp(8px, 0.8vw, 12px);
+      line-height: 1.6; color: #cdd6f4; max-height: clamp(150px, 22vh, 240px); overflow-y: auto;
+    }
+    .output-body::-webkit-scrollbar { width: 4px; }
+    .output-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+    .md-h1 { color: #89b4fa; font-weight: 700; font-size: 1.1em; }
+    .md-h2 { color: #a6e3a1; font-weight: 600; margin-top: 8px; }
+    .md-bullet { color: #94e2d5; }
+    .md-bold { color: #f5c2e7; font-weight: 600; }
+
+    /* ===== Nav ===== */
     .nav-bar {
       position: fixed; bottom: clamp(16px, 2vw, 28px);
       left: 50%; transform: translateX(-50%);
@@ -384,11 +431,7 @@
     .slide.active .anim-item:nth-child(12){animation-delay:0.65s}
 
     @media (prefers-reduced-motion: reduce) {
-      *,*::before,*::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+      *,*::before,*::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
 
     ::-webkit-scrollbar { width: 4px; }
@@ -402,11 +445,11 @@
 
 <div class="presentation" id="presentation">
 
-  <!-- ========== SLIDE 0: COVER ========== -->
+  <!-- SLIDE 0: COVER -->
   <div class="slide active" data-slide="0">
     <div class="slide-content cover-content">
       <div class="cover-title anim-item">BMAD Method</div>
-      <div class="cover-subtitle anim-item">คู่มือการใช้งาน — วิธีติดตั้ง, คำสั่งทั้งหมด, และแนวทางสำหรับ BA</div>
+      <div class="cover-subtitle anim-item">Sharing Session — วิธีติดตั้ง, คำสั่งทั้งหมด</div>
       <div class="cover-roles">
         <div class="role-chip anim-item">🧙 AI Agents</div>
         <div class="role-chip anim-item">📊 Business Analysis</div>
@@ -416,36 +459,17 @@
     </div>
   </div>
 
-  <!-- ========== SLIDE 1: BMAD คืออะไร ========== -->
+  <!-- SLIDE 1: BMAD คืออะไร -->
   <div class="slide" data-slide="1">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>ภาพรวม</div>
-      <div class="slide-number">01</div>
-    </div>
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>ภาพรวม</div><div class="slide-number">02</div></div>
     <div class="slide-title anim-item">BMAD Method คืออะไร?</div>
     <div class="slide-subtitle anim-item">BMad Agentic Development Method</div>
     <div class="slide-content">
       <div class="stats-row" style="margin-bottom: clamp(16px, 2vw, 28px);">
-        <div class="stat-item anim-item">
-          <div class="stat-number">6</div>
-          <div class="stat-label">Modules</div>
-          <div class="stat-desc">แบ่งตามความเชี่ยวชาญ</div>
-        </div>
-        <div class="stat-item anim-item">
-          <div class="stat-number">25+</div>
-          <div class="stat-label">AI Agents</div>
-          <div class="stat-desc">ผู้เชี่ยวชาญเฉพาะด้าน</div>
-        </div>
-        <div class="stat-item anim-item">
-          <div class="stat-number">70+</div>
-          <div class="stat-label">Workflows</div>
-          <div class="stat-desc">กระบวนการอัตโนมัติ</div>
-        </div>
-        <div class="stat-item anim-item">
-          <div class="stat-number">v6</div>
-          <div class="stat-label">Version</div>
-          <div class="stat-desc">เสถียร พร้อมใช้งาน</div>
-        </div>
+        <div class="stat-item anim-item"><div class="stat-number">6</div><div class="stat-label">Modules</div><div class="stat-desc">แบ่งตามความเชี่ยวชาญ</div></div>
+        <div class="stat-item anim-item"><div class="stat-number">25+</div><div class="stat-label">AI Agents</div><div class="stat-desc">ผู้เชี่ยวชาญเฉพาะด้าน</div></div>
+        <div class="stat-item anim-item"><div class="stat-number">70+</div><div class="stat-label">Workflows</div><div class="stat-desc">กระบวนการอัตโนมัติ</div></div>
+        <div class="stat-item anim-item"><div class="stat-number">v6</div><div class="stat-label">Version</div><div class="stat-desc">เสถียร พร้อมใช้งาน</div></div>
       </div>
       <ul class="bullet-list" style="max-width: 700px; margin: 0 auto;">
         <li class="anim-item"><span class="bullet"></span>แพลตฟอร์มที่ใช้ <span class="hl hl-blue">AI Agents</span> ช่วยพัฒนาซอฟต์แวร์ครบวงจร</li>
@@ -455,295 +479,123 @@
     </div>
   </div>
 
-  <!-- ========== SLIDE 2: การติดตั้ง ========== -->
+  <!-- SLIDE 2: Prerequisites -->
   <div class="slide" data-slide="2">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>เริ่มต้น</div>
-      <div class="slide-number">02</div>
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>เตรียมตัว</div><div class="slide-number">03</div></div>
+    <div class="slide-title anim-item">สิ่งที่ต้องมีก่อนเริ่ม</div>
+    <div class="slide-subtitle anim-item">เตรียม 3 อย่างนี้ แล้วพร้อมใช้งานทันที</div>
+    <div class="slide-content">
+      <div class="cards-grid cols-3">
+        <div class="card anim-item highlight-blue"><div class="card-icon">💻</div><div class="card-title">Node.js</div><div class="card-desc">ติดตั้ง Node.js (v18+) เพื่อใช้คำสั่ง <code>npx</code></div><span class="card-tag tag-blue">nodejs.org</span></div>
+        <div class="card anim-item highlight-green"><div class="card-icon">🤖</div><div class="card-title">Claude Code</div><div class="card-desc">สมัคร Claude Pro/Team แล้วติดตั้ง CLI ผ่าน <code>npm i -g @anthropic-ai/claude-code</code></div><span class="card-tag tag-green">จำเป็น</span></div>
+        <div class="card anim-item highlight-purple"><div class="card-icon">📝</div><div class="card-title">VS Code / Terminal</div><div class="card-desc">ใช้ VS Code กับ Claude Code Extension หรือเปิด Terminal ในโปรเจกต์ได้เลย</div><span class="card-tag tag-purple">IDE</span></div>
+      </div>
+      <ul class="bullet-list anim-item" style="max-width: 600px; margin: clamp(12px, 1.5vw, 20px) auto 0;">
+        <li><span class="bullet"></span>ตรวจสอบ Node.js: พิมพ์ <code>node -v</code></li>
+        <li><span class="bullet"></span>ตรวจสอบ Claude Code: พิมพ์ <code>claude --version</code></li>
+      </ul>
     </div>
+  </div>
+
+  <!-- SLIDE 3: การติดตั้ง -->
+  <div class="slide" data-slide="3">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>เริ่มต้น</div><div class="slide-number">04</div></div>
     <div class="slide-title anim-item">การติดตั้ง BMAD</div>
     <div class="slide-subtitle anim-item">เริ่มต้นได้ในไม่กี่นาที</div>
     <div class="slide-content">
       <div class="timeline">
-        <div class="timeline-item anim-item">
-          <div class="timeline-date">ขั้นตอนที่ 1</div>
-          <div class="timeline-title">เปิด Terminal ใน Project</div>
-          <div class="timeline-desc">เปิด Terminal หรือ Command Line ในโฟลเดอร์โปรเจกต์ที่ต้องการ</div>
-        </div>
-        <div class="timeline-item anim-item">
-          <div class="timeline-date">ขั้นตอนที่ 2</div>
-          <div class="timeline-title">รันคำสั่ง <code>npx bmad-method install</code></div>
-          <div class="timeline-desc">ระบบจะดาวน์โหลดและเริ่มกระบวนการติดตั้งอัตโนมัติ</div>
-        </div>
-        <div class="timeline-item anim-item">
-          <div class="timeline-date">ขั้นตอนที่ 3</div>
-          <div class="timeline-title">ตอบคำถามการตั้งค่า</div>
-          <div class="timeline-desc">ชื่อผู้ใช้, ภาษาที่ต้องการ, IDE ที่ใช้ (รองรับ claude-code)</div>
-        </div>
-        <div class="timeline-item anim-item">
-          <div class="timeline-date">ขั้นตอนที่ 4</div>
-          <div class="timeline-title">เลือก Modules</div>
-          <div class="timeline-desc">เลือก modules ที่ต้องการ เช่น BMM, CIS, TEA</div>
-        </div>
-        <div class="timeline-item anim-item">
-          <div class="timeline-date">ขั้นตอนที่ 5</div>
-          <div class="timeline-title">พร้อมใช้งาน!</div>
-          <div class="timeline-desc">ระบบสร้างโฟลเดอร์ <code>_bmad/</code> พร้อม config, agents, workflows ทั้งหมด</div>
-        </div>
+        <div class="timeline-item anim-item"><div class="timeline-date">ขั้นตอนที่ 1</div><div class="timeline-title">เปิด Terminal ใน Project</div><div class="timeline-desc">เปิด Terminal ในโฟลเดอร์โปรเจกต์ที่ต้องการ</div></div>
+        <div class="timeline-item anim-item"><div class="timeline-date">ขั้นตอนที่ 2</div><div class="timeline-title">รัน <code>npx bmad-method install</code></div><div class="timeline-desc">ระบบจะดาวน์โหลดและเริ่มกระบวนการติดตั้งอัตโนมัติ</div></div>
+        <div class="timeline-item anim-item"><div class="timeline-date">ขั้นตอนที่ 3</div><div class="timeline-title">ตอบคำถามการตั้งค่า</div><div class="timeline-desc">ชื่อผู้ใช้งาน, ภาษาที่ต้องการ, IDE ที่ใช้</div></div>
+        <div class="timeline-item anim-item"><div class="timeline-date">ขั้นตอนที่ 4</div><div class="timeline-title">เลือก Modules</div><div class="timeline-desc">เลือก modules ที่ต้องการ เช่น BMM, CIS, TEA</div></div>
+        <div class="timeline-item anim-item"><div class="timeline-date">ขั้นตอนที่ 5</div><div class="timeline-title">พร้อมใช้งาน!</div><div class="timeline-desc">ระบบสร้างโฟลเดอร์ <code>_bmad/</code> พร้อม config, agents, workflows</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ========== SLIDE 3: Modules ========== -->
-  <div class="slide" data-slide="3">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>โครงสร้าง</div>
-      <div class="slide-number">03</div>
-    </div>
+  <!-- SLIDE 4: Modules -->
+  <div class="slide" data-slide="4">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>โครงสร้าง</div><div class="slide-number">05</div></div>
     <div class="slide-title anim-item">Modules ทั้งหมด</div>
     <div class="slide-subtitle anim-item">แบ่งตามความเชี่ยวชาญ — ติดตั้งเฉพาะที่ต้องการ</div>
     <div class="slide-content">
       <div class="cards-grid cols-3">
-        <div class="card anim-item">
-          <div class="card-icon">🧙</div>
-          <div class="card-title">Core</div>
-          <div class="card-desc">BMad Master, Brainstorming, Party Mode — แกนหลักที่ขาดไม่ได้</div>
-          <span class="card-tag tag-blue">built-in</span>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">📋</div>
-          <div class="card-title">BMM</div>
-          <div class="card-desc">Analyst, PM, Architect, Dev, QA, UX Designer, Scrum Master, Tech Writer</div>
-          <span class="card-tag tag-blue">built-in</span>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">🤖</div>
-          <div class="card-title">BMB</div>
-          <div class="card-desc">BMAD Builder — สร้าง/แก้ไข Agents, Workflows, Modules</div>
-          <span class="card-tag tag-purple">external</span>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">🧠</div>
-          <div class="card-title">CIS</div>
-          <div class="card-desc">Creative Intelligence — Brainstorming, Design Thinking, Innovation</div>
-          <span class="card-tag tag-orange">external</span>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">🎮</div>
-          <div class="card-title">GDS</div>
-          <div class="card-desc">Game Dev Studio — Game design, development, testing ครบวงจร</div>
-          <span class="card-tag tag-green">external</span>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">🧪</div>
-          <div class="card-title">TEA</div>
-          <div class="card-desc">Test Architecture — Test frameworks, automation, CI/CD pipeline</div>
-          <span class="card-tag tag-red">external</span>
-        </div>
+        <div class="card anim-item"><div class="card-icon">🧙</div><div class="card-title">Core</div><div class="card-desc">BMad Master, Brainstorming, Party Mode</div><span class="card-tag tag-blue">built-in</span></div>
+        <div class="card anim-item"><div class="card-icon">📋</div><div class="card-title">BMM</div><div class="card-desc">Analyst, PM, Architect, Dev, QA, UX, SM, Tech Writer</div><span class="card-tag tag-blue">built-in</span></div>
+        <div class="card anim-item"><div class="card-icon">🤖</div><div class="card-title">BMB</div><div class="card-desc">BMAD Builder — สร้าง/แก้ไข Agents, Workflows</div><span class="card-tag tag-purple">external</span></div>
+        <div class="card anim-item"><div class="card-icon">🧠</div><div class="card-title">CIS</div><div class="card-desc">Creative Intelligence — Brainstorming, Design Thinking</div><span class="card-tag tag-orange">external</span></div>
+        <div class="card anim-item"><div class="card-icon">🎮</div><div class="card-title">GDS</div><div class="card-desc">Game Dev Studio — Game design, dev, testing</div><span class="card-tag tag-green">external</span></div>
+        <div class="card anim-item"><div class="card-icon">🧪</div><div class="card-title">TEA</div><div class="card-desc">Test Architecture — Frameworks, automation, CI/CD</div><span class="card-tag tag-red">external</span></div>
       </div>
     </div>
   </div>
 
-  <!-- ========== SLIDE 4: Commands - Analysis ========== -->
-  <div class="slide" data-slide="4">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>คำสั่ง</div>
-      <div class="slide-number">04</div>
-    </div>
+  <!-- SLIDE 5-9: Commands (same as before) -->
+  <div class="slide" data-slide="5">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>คำสั่ง</div><div class="slide-number">06</div></div>
     <div class="slide-title anim-item">Analysis & Planning</div>
     <div class="slide-subtitle anim-item">คำสั่งสำหรับช่วงวิเคราะห์และวางแผน</div>
     <div class="slide-content">
       <div class="cmd-list">
-        <div class="cmd-item anim-item highlight-blue">
-          <span class="cmd-icon">🧙</span>
-          <span class="cmd-name">/bmad-agent-bmad-master</span>
-          <span class="cmd-desc">เรียก BMad Master — ศูนย์กลางบัญชาการ</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📊</span>
-          <span class="cmd-name">/bmad-agent-bmm-analyst</span>
-          <span class="cmd-desc">เรียก Mary — Business Analyst</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📋</span>
-          <span class="cmd-name">/bmad-agent-bmm-pm</span>
-          <span class="cmd-desc">เรียก John — Product Manager</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📑</span>
-          <span class="cmd-name">/bmad-bmm-create-product-brief</span>
-          <span class="cmd-desc">สร้าง Product Brief</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">🔍</span>
-          <span class="cmd-name">/bmad-bmm-domain-research</span>
-          <span class="cmd-desc">วิจัย Domain / Industry</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📈</span>
-          <span class="cmd-name">/bmad-bmm-market-research</span>
-          <span class="cmd-desc">วิจัยตลาดและคู่แข่ง</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">🔬</span>
-          <span class="cmd-name">/bmad-bmm-technical-research</span>
-          <span class="cmd-desc">วิจัยเทคโนโลยี</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📝</span>
-          <span class="cmd-name">/bmad-bmm-create-prd</span>
-          <span class="cmd-desc">สร้าง PRD (Product Requirements Document)</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">✏️</span>
-          <span class="cmd-name">/bmad-bmm-edit-prd</span>
-          <span class="cmd-desc">แก้ไข PRD ที่มีอยู่</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">✅</span>
-          <span class="cmd-name">/bmad-bmm-validate-prd</span>
-          <span class="cmd-desc">ตรวจสอบ PRD ตามมาตรฐาน</span>
-        </div>
+        <div class="cmd-item anim-item highlight-blue"><span class="cmd-icon">🧙</span><span class="cmd-name">/bmad-agent-bmad-master</span><span class="cmd-desc">เรียก BMad Master — ศูนย์กลางบัญชาการ</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📊</span><span class="cmd-name">/bmad-agent-bmm-analyst</span><span class="cmd-desc">เรียก Mary — Business Analyst</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📋</span><span class="cmd-name">/bmad-agent-bmm-pm</span><span class="cmd-desc">เรียก John — Product Manager</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📑</span><span class="cmd-name">/bmad-bmm-create-product-brief</span><span class="cmd-desc">สร้าง Product Brief</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">🔍</span><span class="cmd-name">/bmad-bmm-domain-research</span><span class="cmd-desc">วิจัย Domain / Industry</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📈</span><span class="cmd-name">/bmad-bmm-market-research</span><span class="cmd-desc">วิจัยตลาดและคู่แข่ง</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">🔬</span><span class="cmd-name">/bmad-bmm-technical-research</span><span class="cmd-desc">วิจัยเทคโนโลยี</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📝</span><span class="cmd-name">/bmad-bmm-create-prd</span><span class="cmd-desc">สร้าง PRD</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">✏️</span><span class="cmd-name">/bmad-bmm-edit-prd</span><span class="cmd-desc">แก้ไข PRD</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">✅</span><span class="cmd-name">/bmad-bmm-validate-prd</span><span class="cmd-desc">ตรวจสอบ PRD ตามมาตรฐาน</span></div>
       </div>
     </div>
   </div>
 
-  <!-- ========== SLIDE 5: Commands - Design ========== -->
-  <div class="slide" data-slide="5">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>คำสั่ง</div>
-      <div class="slide-number">05</div>
-    </div>
+  <div class="slide" data-slide="6">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>คำสั่ง</div><div class="slide-number">07</div></div>
     <div class="slide-title anim-item">Design & Architecture</div>
     <div class="slide-subtitle anim-item">คำสั่งสำหรับออกแบบและวางสถาปัตยกรรม</div>
     <div class="slide-content">
       <div class="cards-grid cols-2">
-        <div class="card anim-item">
-          <div class="card-icon">🎨</div>
-          <div class="card-title">/bmad-agent-bmm-ux-designer</div>
-          <div class="card-desc">เรียก Sally — UX Designer ผู้เชี่ยวชาญ</div>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">🏗️</div>
-          <div class="card-title">/bmad-agent-bmm-architect</div>
-          <div class="card-desc">เรียก Winston — System Architect</div>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">🎯</div>
-          <div class="card-title">/bmad-bmm-create-ux-design</div>
-          <div class="card-desc">วางแผน UX patterns และ design specs</div>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">⚙️</div>
-          <div class="card-title">/bmad-bmm-create-architecture</div>
-          <div class="card-desc">สร้าง Architecture solution design</div>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">📦</div>
-          <div class="card-title">/bmad-bmm-create-epics-and-stories</div>
-          <div class="card-desc">แตก Requirements เป็น Epics & Stories</div>
-        </div>
-        <div class="card anim-item">
-          <div class="card-icon">🔒</div>
-          <div class="card-title">/bmad-bmm-check-implementation-readiness</div>
-          <div class="card-desc">ตรวจสอบความพร้อมก่อนเริ่ม Dev</div>
-        </div>
+        <div class="card anim-item"><div class="card-icon">🎨</div><div class="card-title">/bmad-agent-bmm-ux-designer</div><div class="card-desc">เรียก Sally — UX Designer</div></div>
+        <div class="card anim-item"><div class="card-icon">🏗️</div><div class="card-title">/bmad-agent-bmm-architect</div><div class="card-desc">เรียก Winston — System Architect</div></div>
+        <div class="card anim-item"><div class="card-icon">🎯</div><div class="card-title">/bmad-bmm-create-ux-design</div><div class="card-desc">วางแผน UX patterns และ design specs</div></div>
+        <div class="card anim-item"><div class="card-icon">⚙️</div><div class="card-title">/bmad-bmm-create-architecture</div><div class="card-desc">สร้าง Architecture solution design</div></div>
+        <div class="card anim-item"><div class="card-icon">📦</div><div class="card-title">/bmad-bmm-create-epics-and-stories</div><div class="card-desc">แตก Requirements เป็น Epics & Stories</div></div>
+        <div class="card anim-item"><div class="card-icon">🔒</div><div class="card-title">/bmad-bmm-check-implementation-readiness</div><div class="card-desc">ตรวจสอบความพร้อมก่อนเริ่ม Dev</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ========== SLIDE 6: Commands - Implementation ========== -->
-  <div class="slide" data-slide="6">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>คำสั่ง</div>
-      <div class="slide-number">06</div>
-    </div>
+  <div class="slide" data-slide="7">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>คำสั่ง</div><div class="slide-number">08</div></div>
     <div class="slide-title anim-item">Implementation & Sprint</div>
     <div class="slide-subtitle anim-item">คำสั่งสำหรับ Sprint และการพัฒนา</div>
     <div class="slide-content">
       <div class="cmd-list">
-        <div class="cmd-item anim-item highlight-blue">
-          <span class="cmd-icon">🏃</span>
-          <span class="cmd-name">/bmad-agent-bmm-sm</span>
-          <span class="cmd-desc">เรียก Bob — Scrum Master</span>
-        </div>
-        <div class="cmd-item anim-item highlight-blue">
-          <span class="cmd-icon">💻</span>
-          <span class="cmd-name">/bmad-agent-bmm-dev</span>
-          <span class="cmd-desc">เรียก Amelia — Developer</span>
-        </div>
-        <div class="cmd-item anim-item highlight-blue">
-          <span class="cmd-icon">🧪</span>
-          <span class="cmd-name">/bmad-agent-bmm-qa</span>
-          <span class="cmd-desc">เรียก Quinn — QA Engineer</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📅</span>
-          <span class="cmd-name">/bmad-bmm-sprint-planning</span>
-          <span class="cmd-desc">วางแผน Sprint</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📊</span>
-          <span class="cmd-name">/bmad-bmm-sprint-status</span>
-          <span class="cmd-desc">ดูสถานะ Sprint</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📖</span>
-          <span class="cmd-name">/bmad-bmm-create-story</span>
-          <span class="cmd-desc">สร้าง Story พร้อม context</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">🔨</span>
-          <span class="cmd-name">/bmad-bmm-dev-story</span>
-          <span class="cmd-desc">Implement Story</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">🔍</span>
-          <span class="cmd-name">/bmad-bmm-code-review</span>
-          <span class="cmd-desc">Adversarial Code Review</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">🔄</span>
-          <span class="cmd-name">/bmad-bmm-correct-course</span>
-          <span class="cmd-desc">แก้ไขทิศทาง Sprint</span>
-        </div>
-        <div class="cmd-item anim-item">
-          <span class="cmd-icon">📋</span>
-          <span class="cmd-name">/bmad-bmm-retrospective</span>
-          <span class="cmd-desc">สรุปบทเรียนหลังจบ Epic</span>
-        </div>
+        <div class="cmd-item anim-item highlight-blue"><span class="cmd-icon">🏃</span><span class="cmd-name">/bmad-agent-bmm-sm</span><span class="cmd-desc">เรียก Bob — Scrum Master</span></div>
+        <div class="cmd-item anim-item highlight-blue"><span class="cmd-icon">💻</span><span class="cmd-name">/bmad-agent-bmm-dev</span><span class="cmd-desc">เรียก Amelia — Developer</span></div>
+        <div class="cmd-item anim-item highlight-blue"><span class="cmd-icon">🧪</span><span class="cmd-name">/bmad-agent-bmm-qa</span><span class="cmd-desc">เรียก Quinn — QA Engineer</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📅</span><span class="cmd-name">/bmad-bmm-sprint-planning</span><span class="cmd-desc">วางแผน Sprint</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📊</span><span class="cmd-name">/bmad-bmm-sprint-status</span><span class="cmd-desc">ดูสถานะ Sprint</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📖</span><span class="cmd-name">/bmad-bmm-create-story</span><span class="cmd-desc">สร้าง Story พร้อม context</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">🔨</span><span class="cmd-name">/bmad-bmm-dev-story</span><span class="cmd-desc">Implement Story</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">🔍</span><span class="cmd-name">/bmad-bmm-code-review</span><span class="cmd-desc">Adversarial Code Review</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">🔄</span><span class="cmd-name">/bmad-bmm-correct-course</span><span class="cmd-desc">แก้ไขทิศทาง Sprint</span></div>
+        <div class="cmd-item anim-item"><span class="cmd-icon">📋</span><span class="cmd-name">/bmad-bmm-retrospective</span><span class="cmd-desc">สรุปบทเรียนหลังจบ Epic</span></div>
       </div>
     </div>
   </div>
 
-  <!-- ========== SLIDE 7: Quick Flow ========== -->
-  <div class="slide" data-slide="7">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>Quick Flow</div>
-      <div class="slide-number">07</div>
-    </div>
+  <div class="slide" data-slide="8">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>Quick Flow</div><div class="slide-number">09</div></div>
     <div class="slide-title anim-item">Quick Flow — ทำงานเร็ว</div>
-    <div class="slide-subtitle anim-item">สำหรับงานเล็กที่ต้องการความเร็ว ไม่ต้องผ่านกระบวนการเต็ม</div>
+    <div class="slide-subtitle anim-item">สำหรับงานเล็กที่ต้องการความเร็ว</div>
     <div class="slide-content">
       <div class="cards-grid cols-3">
-        <div class="card anim-item highlight-blue">
-          <div class="card-icon">📝</div>
-          <div class="card-title">/bmad-bmm-quick-spec</div>
-          <div class="card-desc">สร้าง Quick Tech Spec — กระชับ ได้ใจความ พร้อม implement</div>
-          <span class="card-tag tag-blue">สร้าง Spec</span>
-        </div>
-        <div class="card anim-item highlight-green">
-          <div class="card-icon">⚡</div>
-          <div class="card-title">/bmad-bmm-quick-dev</div>
-          <div class="card-desc">Implement จาก Quick Spec — เขียนโค้ดเลย ไม่ต้องรอ</div>
-          <span class="card-tag tag-green">Implement</span>
-        </div>
-        <div class="card anim-item highlight-purple">
-          <div class="card-icon">🚀</div>
-          <div class="card-title">/bmad-agent-bmm-quick-flow-solo-dev</div>
-          <div class="card-desc">เรียก Barry — Solo Dev ที่ทำทั้ง spec และ implement</div>
-          <span class="card-tag tag-purple">Agent</span>
-        </div>
+        <div class="card anim-item highlight-blue"><div class="card-icon">📝</div><div class="card-title">/bmad-bmm-quick-spec</div><div class="card-desc">สร้าง Quick Tech Spec — กระชับ พร้อม implement</div><span class="card-tag tag-blue">สร้าง Spec</span></div>
+        <div class="card anim-item highlight-green"><div class="card-icon">⚡</div><div class="card-title">/bmad-bmm-quick-dev</div><div class="card-desc">Implement จาก Quick Spec — เขียนโค้ดเลย</div><span class="card-tag tag-green">Implement</span></div>
+        <div class="card anim-item highlight-purple"><div class="card-icon">🚀</div><div class="card-title">/bmad-agent-bmm-quick-flow-solo-dev</div><div class="card-desc">เรียก Barry — Solo Dev ทำทั้ง spec + implement</div><span class="card-tag tag-purple">Agent</span></div>
       </div>
       <div style="text-align: center; margin-top: clamp(16px, 2vw, 28px);">
         <ul class="bullet-list" style="max-width: 500px; margin: 0 auto;">
@@ -754,12 +606,8 @@
     </div>
   </div>
 
-  <!-- ========== SLIDE 8: Utility & Creative ========== -->
-  <div class="slide" data-slide="8">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>คำสั่ง</div>
-      <div class="slide-number">08</div>
-    </div>
+  <div class="slide" data-slide="9">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>คำสั่ง</div><div class="slide-number">10</div></div>
     <div class="slide-title anim-item">Utility & Creative</div>
     <div class="slide-subtitle anim-item">เครื่องมือเสริมและงานสร้างสรรค์</div>
     <div class="slide-content">
@@ -767,127 +615,49 @@
         <div class="col-section">
           <div class="section-label anim-item">สร้างสรรค์ & ร่วมมือ</div>
           <div class="cmd-list">
-            <div class="cmd-item anim-item">
-              <span class="cmd-icon">🧠</span>
-              <span class="cmd-name">/bmad-brainstorming</span>
-              <span class="cmd-desc">Brainstorming Session</span>
-            </div>
-            <div class="cmd-item anim-item">
-              <span class="cmd-icon">🎉</span>
-              <span class="cmd-name">/bmad-party-mode</span>
-              <span class="cmd-desc">คุยกับหลาย Agents พร้อมกัน</span>
-            </div>
-            <div class="cmd-item anim-item">
-              <span class="cmd-icon">❓</span>
-              <span class="cmd-name">/bmad-help</span>
-              <span class="cmd-desc">ขอคำแนะนำว่าควรทำอะไรต่อ</span>
-            </div>
+            <div class="cmd-item anim-item"><span class="cmd-icon">🧠</span><span class="cmd-name">/bmad-brainstorming</span><span class="cmd-desc">Brainstorming Session</span></div>
+            <div class="cmd-item anim-item"><span class="cmd-icon">🎉</span><span class="cmd-name">/bmad-party-mode</span><span class="cmd-desc">คุยกับหลาย Agents พร้อมกัน</span></div>
+            <div class="cmd-item anim-item"><span class="cmd-icon">❓</span><span class="cmd-name">/bmad-help</span><span class="cmd-desc">ขอคำแนะนำว่าควรทำอะไรต่อ</span></div>
           </div>
         </div>
         <div class="col-section">
           <div class="section-label anim-item">รีวิว & เอกสาร</div>
           <div class="cmd-list">
-            <div class="cmd-item anim-item">
-              <span class="cmd-icon">👁️</span>
-              <span class="cmd-name">/bmad-review-adversarial-general</span>
-              <span class="cmd-desc">Adversarial Review</span>
-            </div>
-            <div class="cmd-item anim-item">
-              <span class="cmd-icon">🔎</span>
-              <span class="cmd-name">/bmad-review-edge-case-hunter</span>
-              <span class="cmd-desc">หา Edge Cases</span>
-            </div>
-            <div class="cmd-item anim-item">
-              <span class="cmd-icon">✍️</span>
-              <span class="cmd-name">/bmad-editorial-review-prose</span>
-              <span class="cmd-desc">รีวิวการเขียน</span>
-            </div>
-            <div class="cmd-item anim-item">
-              <span class="cmd-icon">📂</span>
-              <span class="cmd-name">/bmad-bmm-document-project</span>
-              <span class="cmd-desc">สร้างเอกสารโปรเจกต์</span>
-            </div>
-            <div class="cmd-item anim-item">
-              <span class="cmd-icon">🧪</span>
-              <span class="cmd-name">/bmad-bmm-qa-generate-e2e-tests</span>
-              <span class="cmd-desc">สร้าง E2E Tests อัตโนมัติ</span>
-            </div>
+            <div class="cmd-item anim-item"><span class="cmd-icon">👁️</span><span class="cmd-name">/bmad-review-adversarial-general</span><span class="cmd-desc">Adversarial Review</span></div>
+            <div class="cmd-item anim-item"><span class="cmd-icon">🔎</span><span class="cmd-name">/bmad-review-edge-case-hunter</span><span class="cmd-desc">หา Edge Cases</span></div>
+            <div class="cmd-item anim-item"><span class="cmd-icon">✍️</span><span class="cmd-name">/bmad-editorial-review-prose</span><span class="cmd-desc">รีวิวการเขียน</span></div>
+            <div class="cmd-item anim-item"><span class="cmd-icon">📂</span><span class="cmd-name">/bmad-bmm-document-project</span><span class="cmd-desc">สร้างเอกสารโปรเจกต์</span></div>
+            <div class="cmd-item anim-item"><span class="cmd-icon">🧪</span><span class="cmd-name">/bmad-bmm-qa-generate-e2e-tests</span><span class="cmd-desc">สร้าง E2E Tests อัตโนมัติ</span></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ========== SLIDE 9: BA Commands ========== -->
-  <div class="slide" data-slide="9">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>⭐ สำหรับ BA</div>
-      <div class="slide-number">09</div>
-    </div>
+  <!-- SLIDE 10: BA Commands -->
+  <div class="slide" data-slide="10">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>⭐ สำหรับ BA</div><div class="slide-number">11</div></div>
     <div class="slide-title anim-item">คำสั่งที่ BA ควรใช้บ่อย</div>
     <div class="slide-subtitle anim-item">แบ่งตามช่วงเวลาการทำงาน</div>
     <div class="slide-content">
       <div class="split-row">
-        <div class="mini-card anim-item" style="border-left: 3px solid var(--primary);">
-          <div class="mini-card-title">🔍 Discovery & Analysis</div>
-          <ul>
-            <li><code>/bmad-agent-bmm-analyst</code> เรียก Mary วิเคราะห์ Requirements</li>
-            <li><code>/bmad-bmm-domain-research</code> วิจัย Domain</li>
-            <li><code>/bmad-bmm-market-research</code> วิจัยตลาด & คู่แข่ง</li>
-            <li><code>/bmad-bmm-create-product-brief</code> สร้าง Product Brief</li>
-          </ul>
-        </div>
-        <div class="mini-card anim-item" style="border-left: 3px solid var(--secondary);">
-          <div class="mini-card-title">📝 Planning & Docs</div>
-          <ul>
-            <li><code>/bmad-agent-bmm-pm</code> เรียก John ช่วยทำ PRD</li>
-            <li><code>/bmad-bmm-create-prd</code> สร้าง PRD</li>
-            <li><code>/bmad-bmm-validate-prd</code> ตรวจสอบ PRD</li>
-            <li><code>/bmad-bmm-create-ux-design</code> วางแผน UX</li>
-            <li><code>/bmad-bmm-create-epics-and-stories</code> แตก Epics</li>
-          </ul>
-        </div>
-        <div class="mini-card anim-item" style="border-left: 3px solid var(--accent-purple);">
-          <div class="mini-card-title">✅ Sprint & Review</div>
-          <ul>
-            <li><code>/bmad-bmm-sprint-planning</code> วางแผน Sprint</li>
-            <li><code>/bmad-bmm-sprint-status</code> ตรวจสอบสถานะ</li>
-            <li><code>/bmad-bmm-check-implementation-readiness</code> ตรวจสอบความพร้อม</li>
-            <li><code>/bmad-bmm-retrospective</code> สรุปบทเรียน</li>
-          </ul>
-        </div>
+        <div class="mini-card anim-item" style="border-left: 3px solid var(--primary);"><div class="mini-card-title">🔍 Discovery & Analysis</div><ul><li><code>/bmad-agent-bmm-analyst</code> เรียก Mary วิเคราะห์ Requirements</li><li><code>/bmad-bmm-domain-research</code> วิจัย Domain</li><li><code>/bmad-bmm-market-research</code> วิจัยตลาด & คู่แข่ง</li><li><code>/bmad-bmm-create-product-brief</code> สร้าง Product Brief</li></ul></div>
+        <div class="mini-card anim-item" style="border-left: 3px solid var(--secondary);"><div class="mini-card-title">📝 Planning & Docs</div><ul><li><code>/bmad-agent-bmm-pm</code> เรียก John ช่วยทำ PRD</li><li><code>/bmad-bmm-create-prd</code> สร้าง PRD</li><li><code>/bmad-bmm-validate-prd</code> ตรวจสอบ PRD</li><li><code>/bmad-bmm-create-ux-design</code> วางแผน UX</li><li><code>/bmad-bmm-create-epics-and-stories</code> แตก Epics</li></ul></div>
+        <div class="mini-card anim-item" style="border-left: 3px solid var(--accent-purple);"><div class="mini-card-title">✅ Sprint & Review</div><ul><li><code>/bmad-bmm-sprint-planning</code> วางแผน Sprint</li><li><code>/bmad-bmm-sprint-status</code> ตรวจสอบสถานะ</li><li><code>/bmad-bmm-check-implementation-readiness</code> ตรวจสอบความพร้อม</li><li><code>/bmad-bmm-retrospective</code> สรุปบทเรียน</li></ul></div>
       </div>
     </div>
   </div>
 
-  <!-- ========== SLIDE 10: วิธีเรียกใช้ ========== -->
-  <div class="slide" data-slide="10">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>วิธีใช้</div>
-      <div class="slide-number">10</div>
-    </div>
+  <!-- SLIDE 11: วิธีเรียกใช้ -->
+  <div class="slide" data-slide="11">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>วิธีใช้</div><div class="slide-number">12</div></div>
     <div class="slide-title anim-item">วิธีเรียกใช้งาน BMAD</div>
     <div class="slide-subtitle anim-item">3 วิธีหลักในการเริ่มต้นใช้งาน</div>
     <div class="slide-content">
       <div class="cards-grid cols-3" style="margin-bottom: clamp(12px, 1.5vw, 20px);">
-        <div class="card anim-item highlight-blue">
-          <div class="card-icon">⌨️</div>
-          <div class="card-title">วิธีที่ 1: พิมพ์ตรงๆ</div>
-          <div class="card-desc">พิมพ์ Slash Command เลย เช่น <code>/bmad-bmm-create-prd</code></div>
-          <span class="card-tag tag-blue">เร็วที่สุด</span>
-        </div>
-        <div class="card anim-item highlight-green">
-          <div class="card-icon">🧙</div>
-          <div class="card-title">วิธีที่ 2: ผ่าน Agent</div>
-          <div class="card-desc">เรียก <code>/bmad-agent-bmad-master</code> แล้วเลือกจากเมนู</div>
-          <span class="card-tag tag-green">มี Guide</span>
-        </div>
-        <div class="card anim-item highlight-purple">
-          <div class="card-icon">❓</div>
-          <div class="card-title">วิธีที่ 3: ถาม Help</div>
-          <div class="card-desc">พิมพ์ <code>/bmad-help</code> แล้วบอกว่าอยากทำอะไร</div>
-          <span class="card-tag tag-purple">แนะนำ</span>
-        </div>
+        <div class="card anim-item highlight-blue"><div class="card-icon">⌨️</div><div class="card-title">วิธีที่ 1: พิมพ์ตรงๆ</div><div class="card-desc">พิมพ์ Slash Command เลย เช่น <code>/bmad-bmm-create-prd</code></div><span class="card-tag tag-blue">เร็วที่สุด</span></div>
+        <div class="card anim-item highlight-green"><div class="card-icon">🧙</div><div class="card-title">วิธีที่ 2: ผ่าน Agent</div><div class="card-desc">เรียก <code>/bmad-agent-bmad-master</code> แล้วเลือกจากเมนู</div><span class="card-tag tag-green">มี Guide</span></div>
+        <div class="card anim-item highlight-purple"><div class="card-icon">❓</div><div class="card-title">วิธีที่ 3: ถาม Help</div><div class="card-desc">พิมพ์ <code>/bmad-help</code> แล้วบอกว่าอยากทำอะไร</div><span class="card-tag tag-purple">แนะนำ</span></div>
       </div>
       <ul class="bullet-list" style="max-width: 600px; margin: 0 auto;">
         <li class="anim-item"><span class="bullet"></span>ทุก workflow เป็นแบบ <span class="hl hl-blue">interactive</span> — ถาม-ตอบกับ AI ทีละขั้น</li>
@@ -896,41 +666,29 @@
     </div>
   </div>
 
-  <!-- ========== SLIDE 11: Flow ========== -->
-  <div class="slide" data-slide="11">
-    <div class="slide-header">
-      <div class="slide-badge"><span class="dot"></span>กระบวนการ</div>
-      <div class="slide-number">11</div>
-    </div>
+  <!-- SLIDE 12: Flow -->
+  <div class="slide" data-slide="12">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>กระบวนการ</div><div class="slide-number">13</div></div>
     <div class="slide-title anim-item">Flow การทำงานครบวงจร</div>
     <div class="slide-subtitle anim-item">จากไอเดียสู่ซอฟต์แวร์ที่พร้อมส่งมอบ</div>
     <div class="slide-content">
       <div class="flow-container">
         <div class="flow-row anim-item">
-          <div class="flow-step highlight-blue"><span class="icon">📑</span> Product Brief</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step"><span class="icon">🔍</span> Research</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step highlight-blue"><span class="icon">📝</span> PRD</div>
-          <span class="flow-arrow">→</span>
+          <div class="flow-step highlight-blue"><span class="icon">📑</span> Product Brief</div><span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">🔍</span> Research</div><span class="flow-arrow">→</span>
+          <div class="flow-step highlight-blue"><span class="icon">📝</span> PRD</div><span class="flow-arrow">→</span>
           <div class="flow-step"><span class="icon">🎨</span> UX Design</div>
         </div>
         <div class="flow-row anim-item">
-          <div class="flow-step"><span class="icon">🏗️</span> Architecture</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step highlight-blue"><span class="icon">📦</span> Epics & Stories</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step"><span class="icon">📅</span> Sprint Planning</div>
-          <span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">🏗️</span> Architecture</div><span class="flow-arrow">→</span>
+          <div class="flow-step highlight-blue"><span class="icon">📦</span> Epics & Stories</div><span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">📅</span> Sprint Planning</div><span class="flow-arrow">→</span>
           <div class="flow-step"><span class="icon">📖</span> Create Story</div>
         </div>
         <div class="flow-row anim-item">
-          <div class="flow-step"><span class="icon">🔨</span> Dev Story</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step"><span class="icon">🔍</span> Code Review</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step highlight-blue"><span class="icon">📊</span> Sprint Status</div>
-          <span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">🔨</span> Dev Story</div><span class="flow-arrow">→</span>
+          <div class="flow-step"><span class="icon">🔍</span> Code Review</div><span class="flow-arrow">→</span>
+          <div class="flow-step highlight-blue"><span class="icon">📊</span> Sprint Status</div><span class="flow-arrow">→</span>
           <div class="flow-step highlight-purple"><span class="icon">📋</span> Retrospective</div>
         </div>
       </div>
@@ -942,25 +700,204 @@
     </div>
   </div>
 
-  <!-- ========== SLIDE 12: SUMMARY ========== -->
-  <div class="slide" data-slide="12">
-    <div class="slide-content end-content">
-      <div class="end-title anim-item">เริ่มต้นเลย!</div>
-      <div class="slide-subtitle anim-item" style="max-width: 550px;">BMAD Method ช่วยให้ทำงานได้เร็วขึ้นด้วย AI Agents</div>
-      <div class="cards-grid cols-2 anim-item" style="max-width: 700px; margin-top: clamp(12px, 1.5vw, 20px);">
-        <div class="card" style="text-align: center;">
-          <div class="card-icon">🚀</div>
-          <div class="card-title">ติดตั้ง</div>
-          <div class="card-desc"><code>npx bmad-method install</code></div>
+  <!-- SLIDE 13: INSTALL DEMO -->
+  <div class="slide" data-slide="13">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>Demo ติดตั้ง</div><div class="slide-number">14</div></div>
+    <div class="slide-title anim-item">จำลองการติดตั้ง BMAD</div>
+    <div class="slide-subtitle anim-item">ดูขั้นตอนจริงตั้งแต่รันคำสั่ง — กดปุ่ม "ถัดไป" ทีละขั้น</div>
+    <div class="slide-content">
+      <div class="terminal-window anim-item">
+        <div class="terminal-titlebar">
+          <div class="terminal-dot red"></div><div class="terminal-dot yellow"></div><div class="terminal-dot green"></div>
+          <div class="terminal-tab">Terminal — ~/my-project</div>
         </div>
-        <div class="card" style="text-align: center;">
-          <div class="card-icon">❓</div>
-          <div class="card-title">ไม่แน่ใจ?</div>
-          <div class="card-desc">พิมพ์ <code>/bmad-help</code></div>
+        <div class="terminal-body" id="installTerminal">
+          <div class="term-line" data-step="0"><span class="term-prompt">$ </span><span class="term-cmd">npx bmad-method install</span></div>
+          <div class="term-line" data-step="1"><span class="term-muted">Downloading bmad-method@6.0.4...</span></div>
+          <div class="term-line" data-step="1"><span class="term-output">✓ BMAD Method Installer v6.0.4</span></div>
+          <div class="term-line" data-step="2">&nbsp;</div>
+          <div class="term-line" data-step="2"><span class="term-ai">📋 Core Configuration</span></div>
+          <div class="term-line" data-step="2"><span class="term-ai-text">? What is your name? </span><span class="term-cmd">Zup</span></div>
+          <div class="term-line" data-step="3"><span class="term-ai-text">? Communication language? </span><span class="term-cmd">Thai</span></div>
+          <div class="term-line" data-step="3"><span class="term-ai-text">? Document output language? </span><span class="term-cmd">Thai</span></div>
+          <div class="term-line" data-step="3"><span class="term-ai-text">? Output folder? </span><span class="term-cmd">_bmad-output</span></div>
+          <div class="term-line" data-step="4">&nbsp;</div>
+          <div class="term-line" data-step="4"><span class="term-ai">📦 Select Modules to Install</span></div>
+          <div class="term-line" data-step="4"><span class="term-output">  ◉ Core (built-in)</span></div>
+          <div class="term-line" data-step="4"><span class="term-output">  ◉ BMM — Agile Development Method (built-in)</span></div>
+          <div class="term-line" data-step="4"><span class="term-ai-text">  ◉ BMB — BMAD Builder</span></div>
+          <div class="term-line" data-step="4"><span class="term-ai-text">  ◉ CIS — Creative Intelligence Suite</span></div>
+          <div class="term-line" data-step="4"><span class="term-ai-text">  ◉ GDS — Game Dev Studio</span></div>
+          <div class="term-line" data-step="4"><span class="term-ai-text">  ◉ TEA — Test Architecture Enterprise</span></div>
+          <div class="term-line" data-step="5">&nbsp;</div>
+          <div class="term-line" data-step="5"><span class="term-ai">📋 BMM Configuration</span></div>
+          <div class="term-line" data-step="5"><span class="term-ai-text">? Project name? </span><span class="term-cmd">My-Project</span></div>
+          <div class="term-line" data-step="5"><span class="term-ai-text">? Your skill level? </span><span class="term-cmd">intermediate</span></div>
+          <div class="term-line" data-step="5"><span class="term-muted">  (beginner / intermediate / expert)</span></div>
+          <div class="term-line" data-step="6">&nbsp;</div>
+          <div class="term-line" data-step="6"><span class="term-ai">⚙️ Installing modules...</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ Core v6.0.4</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ BMM v6.0.4</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ BMB v0.1.6</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ CIS v0.1.8</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ GDS v0.1.10</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ TEA v1.5.2</span></div>
+          <div class="term-line" data-step="7">&nbsp;</div>
+          <div class="term-line" data-step="7"><span class="term-output">🎉 BMAD Method installed successfully!</span></div>
+          <div class="term-line" data-step="7"><span class="term-file">  → Created: _bmad/ (agents, workflows, config)</span></div>
+          <div class="term-line" data-step="7"><span class="term-file">  → Created: _bmad-output/ (output folder)</span></div>
+          <div class="term-line" data-step="8">&nbsp;</div>
+          <div class="term-line" data-step="8"><span class="term-ai-text">เปิด Claude Code แล้วพิมพ์ <span class="term-cmd">/bmad-help</span> เพื่อเริ่มต้นใช้งาน</span></div>
+        </div>
+        <div class="terminal-controls">
+          <span class="term-status" id="installStatus">กดปุ่มเพื่อเริ่ม</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="term-btn reset" id="installReset">เริ่มใหม่</button>
+            <button class="term-btn" id="installNext">ถัดไป →</button>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: LIVE DEMO -->
+  <div class="slide" data-slide="14">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>Live Demo</div><div class="slide-number">15</div></div>
+    <div class="slide-title anim-item">ลองดูการใช้งานจริง</div>
+    <div class="slide-subtitle anim-item">จำลองการสร้าง Product Brief — กดปุ่ม "ถัดไป" เพื่อดูแต่ละขั้นตอน</div>
+    <div class="slide-content">
+      <div class="terminal-window anim-item">
+        <div class="terminal-titlebar">
+          <div class="terminal-dot red"></div><div class="terminal-dot yellow"></div><div class="terminal-dot green"></div>
+          <div class="terminal-tab">Claude Code — ~/my-project</div>
+        </div>
+        <div class="terminal-body" id="demoTerminal">
+          <div class="term-line" data-step="0"><span class="term-prompt">$ </span><span class="term-cmd">/bmad-bmm-create-product-brief</span></div>
+          <div class="term-line" data-step="1"><span class="term-muted">--- Loading workflow: create-product-brief ---</span></div>
+          <div class="term-line" data-step="2">&nbsp;</div>
+          <div class="term-line" data-step="2"><span class="term-ai">🧙 BMad Master:</span></div>
+          <div class="term-line" data-step="2"><span class="term-ai-text">สวัสดีครับ! มาเริ่มสร้าง Product Brief กันเลย</span></div>
+          <div class="term-line" data-step="2"><span class="term-ai-text">ช่วยเล่าให้ฟังหน่อยครับว่า <span class="term-output">ไอเดียผลิตภัณฑ์</span> ของคุณคืออะไร?</span></div>
+          <div class="term-line" data-step="3">&nbsp;</div>
+          <div class="term-line" data-step="3"><span class="term-prompt">User: </span><span class="term-ai-text">อยากทำแอป Task Management สำหรับทีม Agile</span></div>
+          <div class="term-line" data-step="4">&nbsp;</div>
+          <div class="term-line" data-step="4"><span class="term-ai">🧙 BMad Master:</span></div>
+          <div class="term-line" data-step="4"><span class="term-ai-text">เยี่ยมเลยครับ! ขอถามเพิ่มอีก 3 ข้อ:</span></div>
+          <div class="term-line" data-step="4"><span class="term-output">  1. กลุ่มเป้าหมายหลักคือใคร?</span></div>
+          <div class="term-line" data-step="4"><span class="term-output">  2. ปัญหาหลักที่ต้องการแก้คืออะไร?</span></div>
+          <div class="term-line" data-step="4"><span class="term-output">  3. มีคู่แข่งที่รู้จักไหม?</span></div>
+          <div class="term-line" data-step="5">&nbsp;</div>
+          <div class="term-line" data-step="5"><span class="term-prompt">User: </span><span class="term-ai-text">ทีม dev 5-20 คน, ปัญหาคือ Jira ซับซ้อนเกินไป, คู่แข่ง Linear</span></div>
+          <div class="term-line" data-step="6">&nbsp;</div>
+          <div class="term-line" data-step="6"><span class="term-ai">🧙 BMad Master:</span></div>
+          <div class="term-line" data-step="6"><span class="term-ai-text">ขอบคุณครับ! กำลังสร้าง Product Brief ให้...</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ วิเคราะห์ target audience</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ สรุป value proposition</span></div>
+          <div class="term-line" data-step="6"><span class="term-muted">  ✓ กำหนด scope เบื้องต้น</span></div>
+          <div class="term-line" data-step="7">&nbsp;</div>
+          <div class="term-line" data-step="7"><span class="term-output">✅ สร้าง Product Brief สำเร็จ!</span></div>
+          <div class="term-line" data-step="7"><span class="term-file">  → _bmad-output/planning-artifacts/product-brief.md</span></div>
+          <div class="term-line" data-step="8">&nbsp;</div>
+          <div class="term-line" data-step="8"><span class="term-ai">🧙 BMad Master:</span></div>
+          <div class="term-line" data-step="8"><span class="term-ai-text">ถัดไปแนะนำ <span class="term-cmd">/bmad-bmm-create-prd</span> เพื่อสร้าง PRD ครับ</span></div>
+        </div>
+        <div class="terminal-controls">
+          <span class="term-status" id="demoStatus">กดปุ่มเพื่อเริ่ม</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="term-btn reset" id="demoReset">เริ่มใหม่</button>
+            <button class="term-btn" id="demoNext">ถัดไป →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: Output Examples -->
+  <div class="slide" data-slide="15">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>ตัวอย่าง</div><div class="slide-number">16</div></div>
+    <div class="slide-title anim-item">ตัวอย่าง Output</div>
+    <div class="slide-subtitle anim-item">ผลลัพธ์จริงที่ BMAD สร้างให้ — บันทึกเป็น Markdown พร้อมใช้</div>
+    <div class="slide-content">
+      <div class="two-col">
+        <div class="col-section anim-item">
+          <div class="section-label">Product Brief</div>
+          <div class="output-preview">
+            <div class="output-header"><span class="file-icon">📄</span> product-brief.md</div>
+            <div class="output-body">
+<span class="md-h1"># Product Brief: AgileFlow</span>
+
+<span class="md-h2">## Vision</span>
+<span class="md-bullet">ทำให้ Agile project management เรียบง่าย
+สำหรับทีม dev ขนาดเล็ก-กลาง (5-20 คน)</span>
+
+<span class="md-h2">## Target Audience</span>
+<span class="md-bullet">- Scrum Masters ที่เบื่อความซับซ้อนของ Jira</span>
+<span class="md-bullet">- Tech Leads ที่ต้องการ visibility</span>
+<span class="md-bullet">- Developers ที่อยากโฟกัสที่โค้ด</span>
+
+<span class="md-h2">## Key Differentiators</span>
+<span class="md-bullet">- <span class="md-bold">Speed-first UX</span> — ทำทุกอย่างได้ใน 2 คลิก</span>
+<span class="md-bullet">- <span class="md-bold">AI Sprint Planning</span> — แนะนำ story points</span>
+<span class="md-bullet">- <span class="md-bold">Dev-friendly</span> — CLI + GitHub integration</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-section anim-item">
+          <div class="section-label">โครงสร้าง Output Folder</div>
+          <div class="output-preview">
+            <div class="output-header"><span class="file-icon">📁</span> _bmad-output/</div>
+            <div class="output-body">
+<span class="md-h2">📁 planning-artifacts/</span>
+<span class="md-bullet">  ├── product-brief.md</span>
+<span class="md-bullet">  ├── prd.md</span>
+<span class="md-bullet">  ├── ux-design.md</span>
+<span class="md-bullet">  ├── architecture.md</span>
+<span class="md-bullet">  └── epics-and-stories.md</span>
+
+<span class="md-h2">📁 implementation-artifacts/</span>
+<span class="md-bullet">  ├── sprint-status.yaml</span>
+<span class="md-bullet">  ├── stories/</span>
+<span class="md-bullet">  │   ├── story-E1-S1.md</span>
+<span class="md-bullet">  │   └── story-E1-S2.md</span>
+<span class="md-bullet">  └── retrospective.md</span>
+
+<span class="md-h2">📁 test-artifacts/</span>
+<span class="md-bullet">  └── e2e-tests.md</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: Tips -->
+  <div class="slide" data-slide="16">
+    <div class="slide-header"><div class="slide-badge"><span class="dot"></span>Tips</div><div class="slide-number">17</div></div>
+    <div class="slide-title anim-item">Tips สำหรับผู้ใช้งาน</div>
+    <div class="slide-subtitle anim-item">เทคนิคที่ช่วยให้ได้ผลลัพธ์ดีขึ้น</div>
+    <div class="slide-content">
+      <div class="cards-grid cols-2">
+        <div class="card anim-item"><div class="card-icon">💬</div><div class="card-title">ตอบคำถาม AI ให้ละเอียด</div><div class="card-desc">ยิ่งให้ข้อมูล context มากเท่าไหร่ AI ยิ่งสร้าง output ที่ตรงใจ ไม่ต้องกลัวพิมพ์ยาว</div></div>
+        <div class="card anim-item"><div class="card-icon">🔄</div><div class="card-title">ทำทีละขั้นตอน</div><div class="card-desc">ตรวจสอบ output แต่ละขั้นก่อนไปขั้นถัดไป — แก้ไขได้ ไม่ต้องรอจนจบ</div></div>
+        <div class="card anim-item"><div class="card-icon">❓</div><div class="card-title">ใช้ /bmad-help เสมอ</div><div class="card-desc">ไม่แน่ใจว่าจะเริ่มจากตรงไหน? พิมพ์ <code>/bmad-help</code> แล้วบอกสิ่งที่ต้องการ</div></div>
+        <div class="card anim-item"><div class="card-icon">📂</div><div class="card-title">เปิดใน folder โปรเจกต์</div><div class="card-desc">ต้องเปิด Claude Code ใน folder ที่ติดตั้ง BMAD ไว้ ไม่งั้นจะไม่เห็นคำสั่ง</div></div>
+        <div class="card anim-item"><div class="card-icon">✏️</div><div class="card-title">แก้ไข output ได้ตลอด</div><div class="card-desc">ไฟล์ output เป็น Markdown ธรรมดา — เปิดแก้ได้ หรือใช้ <code>/bmad-bmm-edit-prd</code> ให้ AI ช่วย</div></div>
+        <div class="card anim-item"><div class="card-icon">🎯</div><div class="card-title">เลือก Module ตาม Role</div><div class="card-desc">BA/PM → BMM | Dev → BMM + TEA | Creative → CIS | Game Dev → GDS</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: SUMMARY -->
+  <div class="slide" data-slide="17">
+    <div class="slide-content end-content">
+      <div class="end-title anim-item">ลองใช้กันเลย!</div>
+      <div class="slide-subtitle anim-item" style="max-width: 550px;">BMAD Method ช่วยให้ทำงานได้เร็วขึ้นด้วย AI Agents — ไม่ยาก ลองแล้วจะติดใจ</div>
+      <div class="cards-grid cols-2 anim-item" style="max-width: 700px; margin-top: clamp(12px, 1.5vw, 20px);">
+        <div class="card" style="text-align: center;"><div class="card-icon">🚀</div><div class="card-title">ติดตั้ง</div><div class="card-desc"><code>npx bmad-method install</code></div></div>
+        <div class="card" style="text-align: center;"><div class="card-icon">❓</div><div class="card-title">ไม่แน่ใจ?</div><div class="card-desc">พิมพ์ <code>/bmad-help</code></div></div>
+      </div>
       <div class="cover-roles anim-item" style="margin-top: clamp(12px, 1.5vw, 20px);">
-        <div class="role-chip">BA ใช้เป็นเครื่องมือหลักได้ทุกขั้นตอน</div>
+        <div class="role-chip">ทุกคนใช้ได้ — BA, Dev, PM, QA, Designer</div>
       </div>
     </div>
   </div>
@@ -974,19 +911,85 @@
   <button class="nav-btn" id="prevBtn" title="Previous">&#x2039;</button>
   <div class="nav-progress" id="navProgress"></div>
   <button class="nav-btn" id="nextBtn" title="Next">&#x203A;</button>
-  <div class="nav-counter" id="navCounter">1 / 13</div>
+  <div class="nav-counter" id="navCounter">1 / 17</div>
   <button class="nav-btn" id="menuBtn" title="Slide Menu">&#x2630;</button>
 </div>
 
 <script>
+// Install Demo
+(function() {
+  var step = -1, maxStep = 8;
+  var terminal = document.getElementById('installTerminal');
+  var nextBtn = document.getElementById('installNext');
+  var resetBtn = document.getElementById('installReset');
+  var status = document.getElementById('installStatus');
+  var lines = terminal.querySelectorAll('.term-line');
+
+  nextBtn.addEventListener('click', function(e) {
+    e.stopPropagation(); e.preventDefault();
+    if (step >= maxStep) return;
+    step++;
+    lines.forEach(function(l) { if (Number(l.getAttribute('data-step')) <= step) l.classList.add('visible'); });
+    status.textContent = 'ขั้นตอน ' + step + ' / ' + maxStep;
+    if (step >= maxStep) nextBtn.disabled = true;
+    setTimeout(function() { terminal.scrollTop = terminal.scrollHeight; }, 50);
+  });
+
+  resetBtn.addEventListener('click', function(e) {
+    e.stopPropagation(); e.preventDefault();
+    step = -1;
+    lines.forEach(function(l) { l.classList.remove('visible'); });
+    nextBtn.disabled = false;
+    status.textContent = 'กดปุ่มเพื่อเริ่ม';
+    terminal.scrollTop = 0;
+  });
+})();
+
+// Terminal Demo (Product Brief)
+(function() {
+  let demoStep = -1;
+  const demoMaxStep = 8;
+  const demoTerminal = document.getElementById('demoTerminal');
+  const demoNextBtn = document.getElementById('demoNext');
+  const demoResetBtn = document.getElementById('demoReset');
+  const demoStatus = document.getElementById('demoStatus');
+  const termLines = demoTerminal.querySelectorAll('.term-line');
+
+  demoNextBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    if (demoStep >= demoMaxStep) return;
+    demoStep++;
+    termLines.forEach(function(line) {
+      var step = Number(line.getAttribute('data-step'));
+      if (step <= demoStep) line.classList.add('visible');
+    });
+    demoStatus.textContent = 'ขั้นตอน ' + demoStep + ' / ' + demoMaxStep;
+    if (demoStep >= demoMaxStep) demoNextBtn.disabled = true;
+    setTimeout(function() { demoTerminal.scrollTop = demoTerminal.scrollHeight; }, 50);
+  });
+
+  demoResetBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    demoStep = -1;
+    termLines.forEach(function(l) { l.classList.remove('visible'); });
+    demoNextBtn.disabled = false;
+    demoStatus.textContent = 'กดปุ่มเพื่อเริ่ม';
+    demoTerminal.scrollTop = 0;
+  });
+})();
+
+// Slide Navigation
 (function() {
   const slides = document.querySelectorAll('.slide');
   const totalSlides = slides.length;
   let currentSlide = 0, animTimer = null, dropdownOpen = false;
 
   const slideTitles = [
-    'BMAD Method — หน้าปก',
+    'BMAD Method — Sharing Session',
     'BMAD Method คืออะไร?',
+    'สิ่งที่ต้องมีก่อนเริ่ม',
     'การติดตั้ง BMAD',
     'Modules ทั้งหมด',
     'คำสั่ง: Analysis & Planning',
@@ -997,11 +1000,15 @@
     'คำสั่งที่ BA ควรใช้บ่อย ⭐',
     'วิธีเรียกใช้งาน BMAD',
     'Flow การทำงานครบวงจร',
-    'สรุป — เริ่มต้นเลย!',
+    'Demo ติดตั้ง — npx bmad-method install',
+    'Live Demo — สร้าง Product Brief',
+    'ตัวอย่าง Output',
+    'Tips สำหรับผู้ใช้งาน',
+    'สรุป — ลองใช้กันเลย!',
   ];
 
+  // Create nav dots
   const navProgress = document.getElementById('navProgress');
-
   for (let i = 0; i < totalSlides; i++) {
     const dot = document.createElement('div');
     dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
@@ -1009,25 +1016,19 @@
     navProgress.appendChild(dot);
   }
 
+  // Create dropdown items
   const dropdown = document.getElementById('pageDropdown');
   slideTitles.forEach((title, i) => {
     const item = document.createElement('div');
     item.className = 'page-dropdown-item' + (i === 0 ? ' active' : '');
-    item.innerHTML = '<span class="item-num">' + String(i).padStart(2, '0') + '</span> ' + title;
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleDropdown(false);
-      requestAnimationFrame(() => goToSlide(i));
-    });
+    item.innerHTML = '<span class="item-num">' + String(i + 1).padStart(2, '0') + '</span> ' + title;
+    item.addEventListener('click', (e) => { e.stopPropagation(); toggleDropdown(false); requestAnimationFrame(() => goToSlide(i)); });
     dropdown.appendChild(item);
   });
 
   function goToSlide(index) {
     if (index === currentSlide || index < 0 || index >= totalSlides) return;
-    if (animTimer) {
-      clearTimeout(animTimer);
-      slides.forEach(s => { s.classList.remove('active', 'prev'); s.style.transform = ''; });
-    }
+    if (animTimer) { clearTimeout(animTimer); slides.forEach(s => { s.classList.remove('active', 'prev'); s.style.transform = ''; }); }
     const prev = slides[currentSlide], next = slides[index];
     const goingForward = index > currentSlide;
     prev.classList.remove('active');
@@ -1040,19 +1041,15 @@
     next.classList.add('active');
     currentSlide = index;
     updateUI();
-    animTimer = setTimeout(() => {
-      prev.classList.remove('prev');
-      prev.style.transform = '';
-      animTimer = null;
-    }, 500);
+    animTimer = setTimeout(() => { prev.classList.remove('prev'); prev.style.transform = ''; animTimer = null; }, 500);
   }
 
   function updateUI() {
     document.getElementById('navCounter').textContent = (currentSlide + 1) + ' / ' + totalSlides;
-    navProgress.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
     document.getElementById('prevBtn').disabled = currentSlide === 0;
     document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
     document.getElementById('homeBtn').disabled = currentSlide === 0;
+    navProgress.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
     dropdown.querySelectorAll('.page-dropdown-item').forEach((item, i) => item.classList.toggle('active', i === currentSlide));
   }
 
